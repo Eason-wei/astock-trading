@@ -85,7 +85,7 @@ def _check_veto(fupan: Dict) -> tuple[Optional[float], List[str]]:
 
     zhaban = int(fupan.get("open_num", 0) or 0)
     top_rate = float(fupan.get("top_rate", 100))
-    long_ban = int(fupan.get("long_ban", 0))
+    long_ban = int(fupan.get("long_ban", 0) or 0)
     yesterday_top_rate = float(fupan.get("yesterday_top_rate", 0))
     up_num = int(fupan.get("up_num", 0))
     down_num = int(fupan.get("down_num", 1))
@@ -151,7 +151,7 @@ def _score_long_ban(fupan: Dict) -> Dict[str, Any]:
     评估龙头高度、跟风质量、大面扩散。
     核心逻辑：高位≠危险，高位+跟风不足=危险
     """
-    long_ban = int(fupan.get("long_ban", 0))
+    long_ban = int(fupan.get("long_ban", 0) or 0)
     continue_top_num = int(fupan.get("continue_top_num", 0))
     # highopen_rate 已在维度三处理，维度一不再重复计算
     damian = int(fupan.get("damian", 0))

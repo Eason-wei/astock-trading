@@ -88,14 +88,16 @@ def run(step1, step2, step3, step4, step5, fupan=None, ds=None, **kwargs) -> dic
     }
 
     # ===== 1. 整体情绪预判 =====
-    emotion_pred = _predict_emotion(qingxu, degree, step1, step4)
+    emotion_pred = _predict_emotion(qingxu, degree, step1, step4, step2)
     result['predictions'].append(emotion_pred)
 
     # ===== 2. 三问定乾坤检查 =====
     board_health = step4.get('health_score', 50)
-    main_line_data = step2.get('zhuxian', [])
-    main_line_status = '明确' if main_line_data else '无'
-    main_line_strength = 0.7 if main_line_data else 0.3
+    # P0-①修复：zhuxian在step2和step1来源不同，step2只取top6且要求lianban_num>=5
+    # 改用tier1判断（更稳定）：tier1有值=有主线，tier1为空=无主线
+    tier1 = step2.get('tier1', [])
+    main_line_status = '明确' if tier1 else '无'
+    main_line_strength = 0.7 if tier1 else 0.3
 
     # 建议5：从step4/step2推断ladder和main_line趋势
     trends = _infer_trends(step3, step4, step2)
@@ -124,9 +126,16 @@ def run(step1, step2, step3, step4, step5, fupan=None, ds=None, **kwargs) -> dic
         # 没有fupan数据时，退回旧推断逻辑（兜底）
         pain_trend = 'stable'
 
-    # pain_effect_analyzer.score: 越高=市场越健康，直接传给Q3不翻转
-    # （变量名仍用 pain_score 因 Q3.check() 参数名固定，但语义明确：健康分）
-    health_score = pain_result['score'] if pain_result else (100 - step3.get('degree_market', 50))
+    # P0-②接入风控：系统级风险检查（turnover/跌停数/情绪高潮）
+    sys_risk = rc.check_system_risk(
+        turnover=step1.get('amount', 10000),
+        fall_count=step1.get('bottom_num', 0),
+        emotion_score=step3.get('degree_market')
+    )
+
+    # P1-②修复：兜底公式语义已修正（之前100-degree语义反转但效果合理，改为直接用degree）
+    # degree_market本身就反映市场情绪：高=健康，低=危险
+    health_score = pain_result['score'] if pain_result else step3.get('degree_market', 50)
     tq_result = tq.check(
         board_health=board_health,
         main_line={'status': main_line_status, 'strength': main_line_strength,
@@ -168,9 +177,13 @@ def run(step1, step2, step3, step4, step5, fupan=None, ds=None, **kwargs) -> dic
     stock_preds = _predict_stocks(mm, step5, qingxu, step2, step4, ds=ds, date=date)
     result['stock_predictions'] = stock_preds
 
+    # P0-②：将系统风控结果注入result（供下游step7/8使用）
+    result['system_risk'] = sys_risk
+
     # ===== 4. 仓位计划 =====
+    # P0-②：将sys_risk传入仓位计划，系统风控触发时降低仓位
     position_plan = _build_position_plan(
-        step1, step2, step3, step4, step5, pr, tq_result, stock_preds
+        step1, step2, step3, step4, step5, pr, tq_result, stock_preds, sys_risk
     )
     result['position_plan'] = position_plan
 
@@ -271,14 +284,16 @@ def _get_prev_trade_date(date: str) -> str | None:
     return None
 
 
-def _predict_emotion(qingxu: str, degree: int, step1, step4) -> dict:
+def _predict_emotion(qingxu: str, degree: int, step1, step4, step2) -> dict:
     """预判T+1情绪"""
     if qingxu == '冰点期':
         pred = "可能延续冰点或快速转修复"
         conf = "中"
         reason = "冰点期情绪可能快速修复，但需新催化剂"
-    elif qingxu == '高潮期':
-        zhaban = step4.get('ladder', {}).get('zhaban', {}).get('cnt', 0)
+    # P2-⑥修复：zhaban应从step2的strength_eval取（step2从fupan重建），step4的ladder没有zhaban key
+    # zhaban = step4.get('ladder', {}).get('zhaban', {}).get('cnt', 0)  # 永远为0的旧代码
+    zhaban = step2.get('strength_eval', {}).get('zhaban_cnt', 0)  # 来自fupan_data.open_num
+    if qingxu == '高潮期':
         if zhaban >= 10:
             pred = "高潮退潮信号，高位股分批离场"
             conf = "高"
@@ -323,6 +338,9 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
     candidates = step5.get('candidates', [])
     if not candidates:
         return []
+
+    # P1-①修复：conf_floor应基于原始候选数量，不是在循环中动态变化
+    total_candidates = len(candidates)
 
     # 板块共振强度
     tier1 = step2.get('tier1', [])
@@ -401,7 +419,7 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
 
         # 建议2：候选股数量 → 动态置信度门槛
         # candidates 越多 → 市场越混乱 → 提高门槛过滤噪音
-        total_candidates = len(stock_preds)
+        # P1-①修复：使用循环前计算的total_candidates（原始候选数量），不用stock_preds动态计数
         if total_candidates > 80:
             conf_floor = 0.75   # 高噪音市场，只留高置信度
         elif total_candidates > 60:
@@ -470,7 +488,7 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
     return stock_preds
 
 
-def _build_position_plan(step1, step2, step3, step4, step5, pr: PositionRules, tq_result, stock_preds) -> dict:
+def _build_position_plan(step1, step2, step3, step4, step5, pr: PositionRules, tq_result, stock_preds, sys_risk=None) -> dict:
     """构建仓位计划（使用PositionRules）"""
     base_pos = step3.get('base_position', 0.10)
     health = step4.get('health_score', 50)
@@ -479,10 +497,13 @@ def _build_position_plan(step1, step2, step3, step4, step5, pr: PositionRules, t
 
     # 用PositionRules精确计算
     lianban_days = _get_top_lianban_days(step4)
+    # P2-③修复：sector_strength不再硬编码0.7，与_predict_stocks保持一致
+    tier1 = step2.get('tier1', [])
+    sector_strength = 0.8 if tier1 else 0.4
     pc = pr.calculate(
         stage=qingxu,
         lianban_days=lianban_days,
-        sector_strength=0.7,
+        sector_strength=sector_strength,
         is_main_line=bool(step2.get('tier1')),
         emotion_score=step3.get('degree_market'),
     )
@@ -494,10 +515,16 @@ def _build_position_plan(step1, step2, step3, step4, step5, pr: PositionRules, t
     # 有候选标的才考虑开仓
     has_candidates = len([p for p in stock_preds if p.get('can_enter')]) > 0
 
-    final_pos = pc.final_position if has_candidates else 0.0
-
-    # 调整说明
+    # 调整说明（先定义，后填充）
     adjustments = []
+
+    final_pos = pc.final_position if has_candidates else 0.0
+    # P0-②：系统风控触发时按position_limit降低仓位
+    if sys_risk and sys_risk.get('has_risk'):
+        position_limit = sys_risk.get('position_limit', 1.0)
+        final_pos *= position_limit
+        adjustments.append(f"系统风控降权×{position_limit:.0%}")
+
     if not tq_result.passed:
         adjustments.append('三问未通过')
     if health < 50:
@@ -506,6 +533,9 @@ def _build_position_plan(step1, step2, step3, step4, step5, pr: PositionRules, t
         adjustments.append('无合格候选')
     if lianban_days >= 4:
         adjustments.append(f'龙头{lianban_days}板位置过高')
+    # P0-②：系统风控触发时记录原因
+    if sys_risk and sys_risk.get('has_risk'):
+        adjustments.append(f"系统风控:{'; '.join(sys_risk.get('risks', []))}")
 
     return {
         'base_position': f"{pc.base*100:.0f}%",
