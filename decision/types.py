@@ -84,3 +84,12 @@ class MorphologyFeatures:
     # 时间维度特征（predictor 调节置信度用，外部调用时由选股模块填入）
     consec_days: int = 0        # 连续涨停天数（0=非连板）
     cycle_position: str = ''    # 'early'/'mid'/'late'/'unknown'（周期中所处位置）
+
+    # ── 一字板精确判断（逐分钟价格一致性）─────────────────────────
+    # 由 extract_features() 在有完整分钟数据时计算
+    consistency_at_limit: float = 0.0
+        # 涨停一字板精确度：全天价格 == 涨停价的分钟比例（0.0~1.0）
+        # 修复后 A 类要求 consistency_at_limit >= 0.95
+    consistency_at_lower: float = 0.0
+        # 跌停一字板精确度：全天价格 == 跌停价的分钟比例（0.0~1.0）
+        # 跌停一字板要求 consistency_at_lower >= 0.95

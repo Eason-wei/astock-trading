@@ -15,6 +15,68 @@ from typing import Dict, Any, List, Optional
 from .types import Morphology, MorphologyFeatures
 
 
+# ============================================================
+# 涨跌停价格计算（从 step5_stock_filter.py 迁移，不引入 step5 依赖）
+# ============================================================
+
+def _get_limit_ratio(code: str, is_st: bool) -> tuple:
+    """根据股票代码判断涨跌停比例。返回 (limit_ratio, down_ratio, market)"""
+    pure = code.strip().split('.')[0]
+    if pure.startswith('688'):
+        m = 'kcb'
+        return (0.20, 0.20, m) if not is_st else (0.10, 0.10, m)
+    elif pure.startswith('300') or pure.startswith('301'):
+        m = 'cyb'
+        return (0.20, 0.20, m) if not is_st else (0.10, 0.10, m)
+    elif (pure.startswith('9') or pure.startswith('8')) and len(pure) == 6:
+        m = 'bj'
+        return (0.30, 0.30, m) if not is_st else (0.15, 0.15, m)
+    else:
+        m = 'main'
+        return (0.10, 0.10, m) if not is_st else (0.05, 0.05, m)
+
+
+def _round_limit_price(price: float, decimals: int, market: str, prev_close: float) -> float:
+    """涨停价四舍五入：低价股（prev_close<2）用 tick 穷举找最优候选"""
+    multiplier = 10 ** decimals
+    rounded = math.floor(price * multiplier + 0.5) / multiplier
+    if rounded < 0.01:
+        return 0.01
+    if prev_close < 2.0:
+        # 低价股：上下浮动3个tick，找实际涨幅最接近目标的候选
+        tick = 0.01 if prev_close >= 1.0 else (0.001 if prev_close >= 0.1 else 0.0001)
+        base = round(price, decimals)
+        target = 0.10 if market in ('main',) else (0.20 if market in ('cyb', 'kcb') else 0.30)
+        if market == 'bj':
+            target = 0.30 if prev_close >= 1.0 else 0.20
+        elif market in ('cyb', 'kcb'):
+            target = 0.20 if prev_close >= 1.0 else 0.10
+        best, best_diff = base, float('inf')
+        for i in range(-3, 4):
+            c = base + i * tick
+            if c <= 0:
+                continue
+            diff = abs((c - prev_close) / prev_close - target)
+            if diff < best_diff:
+                best, best_diff = c, diff
+        return best
+    return rounded
+
+
+def _calculate_limit_prices(
+    prev_close: float, code: str, is_st: bool = False
+) -> tuple:
+    """
+    计算涨跌停价。
+    返回 (limit_up, limit_down)，单位元，精确到分。
+    """
+    up_ratio, down_ratio, market = _get_limit_ratio(code, is_st)
+    limit_up = _round_limit_price(prev_close * (1.0 + up_ratio), 2, market, prev_close)
+    limit_down = _round_limit_price(prev_close * (1.0 - down_ratio), 2, market, prev_close)
+    limit_down = max(limit_down, 0.01)
+    return limit_up, limit_down
+
+
 class MorphologyClassifier:
     """
     形态分类器（单一职责：分类）
@@ -95,6 +157,17 @@ class MorphologyClassifier:
             amplitude, is_limit_up=(close_pct >= 9.5)
         )
 
+        # ── 一字板精确判断：逐分钟价格一致性 ──────────────────────
+        # 计算涨停价/跌停价
+        code = minute_data[0].get('code', '')
+        limit_up, limit_down = _calculate_limit_prices(base_price, code)
+
+        total_minutes = len(prices)
+        at_limit_count = sum(1 for p in prices if abs(p - limit_up) < 0.005)
+        at_lower_count = sum(1 for p in prices if abs(p - limit_down) < 0.005)
+        consistency_at_limit = at_limit_count / total_minutes if total_minutes > 0 else 0.0
+        consistency_at_lower = at_lower_count / total_minutes if total_minutes > 0 else 0.0
+
         return MorphologyFeatures(
             open_pct=round(open_pct, 2),
             close_pct=round(close_pct, 2),
@@ -108,6 +181,8 @@ class MorphologyClassifier:
             amplitude=round(amplitude, 2),
             push_up_style=push_up_style,
             board_quality=board_quality,
+            consistency_at_limit=round(consistency_at_limit, 4),
+            consistency_at_lower=round(consistency_at_lower, 4),
         )
 
     def _judge_push_style(self, prices: List[float], volumes: List[float], q1_count: int) -> str:
@@ -254,22 +329,29 @@ class MorphologyClassifier:
         基于形态特征分类到 Morphology 枚举。
 
         分类优先级：
-          1. A类：一字板
-          2. B类：正常涨停（close>=9.5% + amplitude<8%）
-          3. C1：冲高回落（high-close>5% + amp>10%）
-          4. D1：低开低走（open<-2% + close<open）
-          5. D2：尾盘急拉（f30>80% + close在-2%~+1%）
-          6. F1：温和放量稳步推进（Q1 40-60% + amp 3-8% + 上涨）
-          7. E2：宽幅震荡（amp>8% + 未涨停）
-          8. E1：普通波动（amp<5%）
+          1. A类：涨停一字板（逐分钟一致性>=95%，优先）或 board_quality=='涨停一字板'（无分钟数据fallback）
+          2. D1：跌停一字板（逐分钟一致性>=95%）或 board_quality=='跌停一字板'
+          3. B类：正常涨停（close>=9.5% + amplitude<8%）
+          4. C1：冲高回落（high-close>5% + amp>10%）
+          5. D1：低开低走（open<-2% + close<open）
+          6. D2：尾盘急拉（f30>80% + close在-2%~+1%）
+          7. F1：温和放量稳步推进（Q1 40-60% + amp 3-8% + 上涨）
+          8. E2：宽幅震荡（amp>8% + 未涨停）
           9. H：横向整理（amp<2 + Q1>70%）
+          10. E1：普通波动（amp<5%，兜底）
         """
-        # A类：涨停一字板（无量锁仓，最强信号）
-        # 修复：严格区分涨停一字板 vs 跌停一字板
-        # 跌停一字板归入 D1（市场最弱信号），不进入 A 类
-        if f.board_quality == '涨停一字板':
+        # ── ① A类涨停一字板 ────────────────────────────────────
+        # 有分钟数据：逐分钟一致性（严格）；无分钟数据：fallback到board_quality近似
+        if f.consistency_at_limit >= 0.95:
             return Morphology.A
-        if f.board_quality == '跌停一字板':
+        if f.consistency_at_limit == 0.0 and f.board_quality == '涨停一字板':
+            # extract_from_ohlc路径，consistency未计算，用旧近似逻辑
+            return Morphology.A
+
+        # ── ② D1跌停一字板 ────────────────────────────────────
+        if f.consistency_at_lower >= 0.95:
+            return Morphology.D1
+        if f.consistency_at_lower == 0.0 and f.board_quality == '跌停一字板':
             return Morphology.D1
 
         # B类：正常涨停（换手充分，稳健）
