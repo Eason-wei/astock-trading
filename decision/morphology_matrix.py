@@ -51,9 +51,9 @@ class MorphologyMatrix:
     # 特征提取（委托给 MorphologyClassifier）
     # ============================================================
 
-    def extract_features(self, minute_data: List[Dict], code: str = "") -> MorphologyFeatures:
-        """从241点分钟数据提取形态特征"""
-        return self._clf.extract_features(minute_data, code=code)
+    def extract_features(self, minute_data: List[Dict], code: str = "", is_st: bool = False) -> MorphologyFeatures:
+        """从241点分钟数据提取形态特征。is_st决定ST股涨停比例（5%而非10%）。"""
+        return self._clf.extract_features(minute_data, code=code, is_st=is_st)
 
     def extract_from_ohlc(
         self,
