@@ -159,9 +159,13 @@ class MorphologyClassifier:
         push_up_style = self._judge_push_style(prices, volumes, q1_count)
 
         # 板的质量判断
+        # ST股涨停阈值为5%，非ST为10%
+        limit_threshold = 4.5 if is_st else 9.5
+        is_limit_up = close_pct >= limit_threshold
         board_quality = self._judge_board_quality(
             open_pct, close_pct, high_pct, low_pct,
-            amplitude, is_limit_up=(close_pct >= 9.5)
+            amplitude, is_limit_up=is_limit_up,
+            limit_threshold=limit_threshold
         )
 
         # ── 一字板精确判断：逐分钟价格一致性 ──────────────────────
@@ -217,30 +221,26 @@ class MorphologyClassifier:
 
     def _judge_board_quality(self, open_pct: float, close_pct: float,
                               high_pct: float, low_pct: float,
-                              amplitude: float, is_limit_up: bool) -> str:
+                              amplitude: float, is_limit_up: bool,
+                              limit_threshold: float = 9.5) -> str:
         """
-        判断板的质量（修复版：区分涨停一字/跌停一字/普通一字）。
+        判断板的质量。
 
-        涨停一字板：close_pct >= 9.5% 且 amplitude < 3%（最强信号，无量锁仓）
-        跌停一字板：close_pct <= -9.5% 且 amplitude < 3%（最弱信号，无量跌停封板）
-        普通一字板：amplitude < 3% 且非涨跌停（波动极小，无方向）
+        ST股涨停阈值为5%，非ST为10%（通过limit_threshold参数传入）。
+        涨跌停一字板：amplitude < 3% + 涨跌停方向
         烂板：涨停后炸开过，收盘与最高点差 > 3%
         实体板：正常封板，非烂板
         非涨停：未涨停
         """
-        # ── 一字板细分（修复：严格区分涨停/跌停/普通）────────────
-        # 注意：amplitude < 3 的情况下，涨跌停方向的判断完全依赖
-        #   close_pct（不用 is_limit_up，因为跌停时 is_limit_up=False）
-        if close_pct >= 9.5 and amplitude < 3:
-            return '涨停一字板'
-        if close_pct <= -9.5 and amplitude < 3:
-            # 跌停一字板：is_limit_up=False，所以必须独立判断
-            # 不再落入后续 amplitude < 3 的普通一字板分支
-            return '跌停一字板'
+        # 一字板细分：amplitude < 3% 时判断方向
         if amplitude < 3:
+            if close_pct >= limit_threshold:
+                return '涨停一字板'
+            if close_pct <= -limit_threshold:
+                return '跌停一字板'
             return '普通一字板'
 
-        # ── amplitude >= 3%：正常判断 ─────────────────────────
+        # amplitude >= 3%：正常判断
         if not is_limit_up:
             return '非涨停'
         if high_pct - close_pct > 3:
@@ -265,7 +265,8 @@ class MorphologyClassifier:
         """
         从OHLC数据提取形态特征（无完整分钟数据时的降级路径）。
 
-        一字板判断：仅用 amplitude<3% + close_pct 近似。
+        base_price 必须 > 0，否则无法计算涨跌幅，返回全零特征。
+        调用方应确保 base_price 有效（可从 minute_data 的 base_price 字段获取）。
         由于没有逐分钟明细，无法判断"241个时间点是否都等于涨停价"。
         若需要精确判断，应调用 extract_features(241点分钟数据)。
 
@@ -281,6 +282,15 @@ class MorphologyClassifier:
           实体板：amplitude >= 3% 且正常涨停
           非涨停：未涨停
         """
+        # base_price 保护：必须 > 0 才能计算涨跌幅
+        if base_price is None or base_price <= 0:
+            return MorphologyFeatures(
+                open_pct=0.0, close_pct=0.0, high_pct=0.0, low_pct=0.0,
+                q1_volume_pct=0.0, q2_volume_pct=0.0, q3_volume_pct=0.0, q4_volume_pct=0.0,
+                f30=0.0, amplitude=0.0, push_up_style='全天稳健',
+                board_quality='非涨停', consistency_at_limit=0.0, consistency_at_lower=0.0,
+            )
+
         open_pct = (open_px - base_price) / base_price * 100
         close_pct = (close_px - base_price) / base_price * 100
         high_pct = (high_px - base_price) / base_price * 100
@@ -405,8 +415,9 @@ class MorphologyClassifier:
             return Morphology.D2
 
         # F1：温和放量稳步推进（Q1占比40-60%，振幅3-8%，量价配合）
+        # 修复：open_pct可以=0（平开也是稳步推进），改为 >= 0
         if 40 <= f.q1_volume_pct <= 60 and 3 <= f.amplitude <= 8:
-            if f.close_pct > f.open_pct > 0:
+            if f.close_pct >= f.open_pct >= 0:
                 return Morphology.F1
 
         # E2：宽幅震荡（振幅>8%但不是涨停）
