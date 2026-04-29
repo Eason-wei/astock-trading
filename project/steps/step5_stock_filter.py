@@ -487,27 +487,60 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
     else:
         result['verdict'] = "无符合条件候选标的，主线龙头位置过高，建议观望"
 
-    # ── ABC因子批量写入 MongoDB（改善1）───────────────────────────────
-    # 对所有在 lianban 里有分钟数据的股票（包括入选和排除的），
-    # 将 _compute_zhangting_strength() 结果写入 zhangting_strength 集合。
-    # step6 可实时查询任意股票的 ABC 因子作为前置过滤器。
-    if ds is not None and date:
+    # ── ABC因子批量写入 MongoDB（改善1-修正）───────────────────────────
+    # 遍历全部 MySQL 股票（不只是候选股），只要触板就写入 MongoDB。
+    # candidates_out 只是 jiuyang 题材成分股，不等于"全部涨停股"。
+    # lianban_code_map 包含当日全部连板股信息（用于判断 ST 等属性）。
+    if ds is not None and date and mysql_stocks:
         saved = 0
-        for c in candidates_out:
-            zts = c.get('_zts', {})
+        skipped_no_mysql = 0
+        for mysql_key, mins in mysql_stocks.items():
+            if len(mins) < 60:
+                continue
+
+            # 从 mysql_key 反推纯数字 code（如 '603095.SH' → '603095'）
+            clean = mysql_key.replace('.SZ', '').replace('.SH', '').strip()
+
+            # 判断是否 ST（ST股涨跌停比例不同）
+            lb_info = lianban_code_map.get(clean, {})
+
+            # 昨收价从分钟数据 base_price 读取
+            prev_close = float(mins[0].get('base_price', 0)) if mins else 0.0
+            if prev_close <= 0:
+                prev_close = float(mins[0].get('price', 0)) if mins else 0.0
+
+            # 计算 ABC 因子（可能已有内存结果则复用，减少重复计算）
+            existing_zts = None
+            for c in candidates_out:
+                if c.get('code') == clean and c.get('_zts', {}).get('score', 0) > 0:
+                    existing_zts = c['_zts']
+                    break
+
+            if existing_zts:
+                zts = existing_zts
+            else:
+                zts = _compute_zhangting_strength(mins, clean, prev_close)
+
+            # 只写入确实触板的（score > 0），避免噪音
             if zts and zts.get('score', 0) > 0:
                 try:
                     ds.save_zhangting_strength(
                         date=date,
-                        stock_code=c.get('code', ''),
-                        stock_name=c.get('name', ''),
+                        stock_code=clean,
+                        stock_name=lb_info.get('name', mysql_key),
                         zts=zts,
                     )
                     saved += 1
-                except Exception as e:
-                    # MongoDB写入失败不影响主流程，仅警告
+                except Exception:
                     pass
-        result['_mongo_save'] = {'zhangting_strength_saved': saved}
+            else:
+                skipped_no_mysql += 1
+
+        result['_mongo_save'] = {
+            'zhangting_strength_saved': saved,
+            'mysql_total_stocks': len(mysql_stocks),
+            'skipped_no_limit': skipped_no_mysql,
+        }
 
     return result
 
