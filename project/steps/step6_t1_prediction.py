@@ -396,16 +396,20 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
             # minute_pattern可能是: None / '一字板' / '早盘拉升' 等字符串
             form_str = mp if isinstance(mp, str) else '普通波动'
             morph = mm.string_to_morphology(form_str)
-            # 估算置信度（F1/A类高，其他低）
-            est_confidence = {'F1温和放量稳步推进': 0.88, 'A类一字板': 0.85, 'B类正常涨停': 0.65}.get(
-                morph.value, 0.45
-            )
+            # Bug2修复：hardcoded dict的key必须与Morphology.value完全一致
+            # Morphology.F1.value='F1温和放量'（不是'F1温和放量稳步推进'）
+            est_confidence = {
+                'F1温和放量': 0.88,  # 注意：Morphology.F1.value = 'F1温和放量'
+                'A类一字板': 0.85,
+                'B类正常涨停': 0.65,
+            }.get(morph.value, 0.45)
             pred = {
                 'morphology': morph.value,
-                't1_direction': mm.config[morph]['t1_bias'],
+                # Bug1修复：config的key是字符串（morph.value），不是Morphology枚举
+                't1_direction': mm.config.get(morph.value, {}).get('t1_bias', 'neutral'),
                 't1_expected_change': '-2%~+2%',
                 'confidence': est_confidence,
-                'rule_applied': f'无分钟数据，使用{Morphology.from_string(form_str).value}形态规则',
+                'rule_applied': f'无分钟数据，使用{morph.value}形态规则',
                 'warnings': [],
                 'sector_boost': 0.0,
                 'final_confidence': est_confidence,

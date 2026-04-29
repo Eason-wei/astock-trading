@@ -5,28 +5,28 @@
       "total": 8
     },
     "B类正常涨停": {
-      "correct": 41,
-      "total": 83,
-      "profit_sum": 100.05999999999997,
-      "profit_count": 44
+      "correct": 56,
+      "total": 111,
+      "profit_sum": 142.49999999999997,
+      "profit_count": 63
     },
     "C1冲高回落": {
       "correct": 0,
-      "total": 19,
-      "profit_sum": 3.1500000000000004,
-      "profit_count": 8
+      "total": 26,
+      "profit_sum": 6.290000000000001,
+      "profit_count": 11
     },
     "E2宽幅震荡": {
-      "correct": 3,
-      "total": 45
+      "correct": 6,
+      "total": 61
     },
     "A类一字板": {
-      "correct": 7,
-      "total": 41
+      "correct": 8,
+      "total": 50
     },
     "E1普通波动": {
-      "correct": 26,
-      "total": 277
+      "correct": 47,
+      "total": 411
     }
   },
   "修复期": {
@@ -35,26 +35,130 @@
       "total": 2
     },
     "A类一字板": {
+      "correct": 4,
+      "total": 6,
+      "profit_sum": 13.39,
+      "profit_count": 5
+    },
+    "B类正常涨停": {
+      "correct": 7,
+      "total": 15,
+      "profit_sum": 16.69,
+      "profit_count": 10
+    },
+    "E1普通波动": {
+      "correct": 52,
+      "total": 117,
+      "profit_sum": 113.78999999999999,
+      "profit_count": 63
+    },
+    "E2宽幅震荡": {
+      "correct": 1,
+      "total": 10
+    },
+    "C1冲高回落": {
+      "correct": 0,
+      "total": 2,
+      "profit_sum": 0.77,
+      "profit_count": 1
+    }
+  },
+  "冰点期": {
+    "A类一字板": {
       "correct": 3,
       "total": 3,
-      "profit_sum": 10.14,
+      "profit_sum": 10.01,
       "profit_count": 3
+    },
+    "E2宽幅震荡": {
+      "correct": 2,
+      "total": 6,
+      "profit_sum": 0.74,
+      "profit_count": 2
+    },
+    "E1普通波动": {
+      "correct": 31,
+      "total": 59,
+      "profit_sum": 63.079999999999984,
+      "profit_count": 34
     },
     "B类正常涨停": {
       "correct": 2,
-      "total": 6,
-      "profit_sum": 5.750000000000001,
+      "total": 3,
+      "profit_sum": 3.58,
+      "profit_count": 2
+    },
+    "C1冲高回落": {
+      "correct": 0,
+      "total": 3
+    }
+  },
+  "升温期": {
+    "E2宽幅震荡": {
+      "correct": 3,
+      "total": 4,
+      "profit_sum": 4.859999999999999,
       "profit_count": 3
     },
+    "A类一字板": {
+      "correct": 1,
+      "total": 6,
+      "profit_sum": 0.56,
+      "profit_count": 2
+    },
     "E1普通波动": {
-      "correct": 16,
-      "total": 37,
-      "profit_sum": 33.36,
+      "correct": 14,
+      "total": 34,
+      "profit_sum": 31.839999999999993,
       "profit_count": 17
     },
+    "B类正常涨停": {
+      "correct": 4,
+      "total": 8,
+      "profit_sum": 7.4799999999999995,
+      "profit_count": 6
+    }
+  },
+  "降温期": {
+    "B类正常涨停": {
+      "correct": 1,
+      "total": 6
+    },
+    "E1普通波动": {
+      "correct": 10,
+      "total": 51
+    },
+    "C1冲高回落": {
+      "correct": 0,
+      "total": 1,
+      "profit_sum": 0.26,
+      "profit_count": 1
+    },
+    "E2宽幅震荡": {
+      "correct": 1,
+      "total": 3
+    },
+    "A类一字板": {
+      "correct": 0,
+      "total": 2
+    }
+  },
+  "高潮期": {
     "E2宽幅震荡": {
       "correct": 0,
-      "total": 4
+      "total": 1
+    },
+    "B类正常涨停": {
+      "correct": 15,
+      "total": 47
+    },
+    "E1普通波动": {
+      "correct": 19,
+      "total": 67
+    },
+    "A类一字板": {
+      "correct": 2,
+      "total": 5
     }
   }
 }
