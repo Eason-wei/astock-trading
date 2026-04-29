@@ -20,22 +20,96 @@ from typing import Dict, Any, List, Optional, Union
 # 涨跌停价计算（A股规则：round half up 到分）
 # =============================================================================
 
-def _get_limit_ratio(code: str, is_st: bool) -> float:
+def _get_limit_ratio(code: str, is_st: bool) -> tuple:
     """
     根据股票代码判断涨跌停比例（内部共享逻辑）。
-    返回：(limit_ratio, limit_down_ratio)
+    返回：(limit_ratio, limit_down_ratio, market)
+        market: 'main' | 'cyb' | 'kcb' | 'bj'
     """
     pure = code.strip().split('.')[0]
     if pure.startswith('688'):
-        return (0.20, 0.20) if not is_st else (0.10, 0.10)
+        market = 'kcb'
+        return (0.20, 0.20, market) if not is_st else (0.10, 0.10, market)
     elif pure.startswith('300') or pure.startswith('301'):
-        return (0.20, 0.20) if not is_st else (0.10, 0.10)
+        market = 'cyb'
+        return (0.20, 0.20, market) if not is_st else (0.10, 0.10, market)
     elif pure.startswith('9') and len(pure) == 6:
-        return (0.30, 0.30) if not is_st else (0.15, 0.15)
+        market = 'bj'
+        return (0.30, 0.30, market) if not is_st else (0.15, 0.15, market)
     elif pure.startswith('8'):
-        return (0.30, 0.30) if not is_st else (0.15, 0.15)
+        market = 'bj'
+        return (0.30, 0.30, market) if not is_st else (0.15, 0.15, market)
     else:
-        return (0.10, 0.10) if not is_st else (0.05, 0.05)
+        market = 'main'
+        return (0.10, 0.10, market) if not is_st else (0.05, 0.05, market)
+
+
+def _round_limit_price(
+    price: float,
+    decimals: int,
+    market: str,
+    prev_close: float
+) -> float:
+    """
+    涨停价四舍五入的核心逻辑。
+    A股规则：
+        1. 价格必须 >= 0.01元
+        2. 对于低价股（prev_close < 2.0），需在基准价上下浮动若干tick，
+           找涨幅最接近规定比例的候选价（防止四舍五入导致实际涨幅偏离规定值超过0.5%）
+    """
+    multiplier = 10 ** decimals
+    rounded_price = math.floor(price * multiplier + 0.5) / multiplier
+    if rounded_price < 0.01:
+        return 0.01
+    # 低价股特殊处理
+    if prev_close < 2.0:
+        return _round_low_price_stock(price, prev_close, market, decimals)
+    return rounded_price
+
+
+def _round_low_price_stock(
+    raw_price: float,
+    prev_close: float,
+    market: str,
+    decimals: int
+) -> float:
+    """
+    处理低价股（昨收<2元）的涨停价计算。
+    规则：在基准价格上下浮动若干最小变动单位，
+          找到涨幅最接近规定比例的候选价。
+    """
+    # 确定最小变动单位（tick_size）
+    if prev_close >= 1.0:
+        tick_size = 0.01
+    elif prev_close >= 0.1:
+        tick_size = 0.001
+    else:
+        tick_size = 0.0001
+
+    multiplier = 10 ** decimals
+    base_price = round(raw_price, decimals)
+    candidates = []
+
+    # 在基准价格上下浮动 3 个 tick，穷举候选
+    for i in range(-3, 4):
+        candidate = base_price + i * tick_size
+        if candidate <= 0:
+            continue
+        actual_ratio = (candidate - prev_close) / prev_close
+        # 根据市场确定目标涨幅
+        if market == 'bj':
+            target_ratio = 0.30 if prev_close >= 1.0 else 0.20
+        elif market in ('cyb', 'kcb'):
+            target_ratio = 0.20 if prev_close >= 1.0 else 0.10
+        else:
+            target_ratio = 0.10 if prev_close >= 1.0 else 0.05
+        ratio_diff = abs(actual_ratio - target_ratio)
+        candidates.append((candidate, ratio_diff))
+
+    if candidates:
+        candidates.sort(key=lambda x: x[1])
+        return candidates[0][0]
+    return round(raw_price, decimals)
 
 
 def calculate_limit_price(
@@ -45,27 +119,23 @@ def calculate_limit_price(
     round_to: int = 2
 ) -> float:
     """
-    计算A股股票的涨停价（精确四舍五入，round half up）。
+    计算A股股票的涨停价（精确四舍五入）。
 
     Args:
         prev_close: 前收盘价（昨收）
-        code:      股票代码，纯数字如 '000062' / '300001' / '688001'
-        is_st:    是否为ST/*ST
-        round_to: 价格小数位数，默认2位
+        code:       股票代码，纯数字如 '000062' / '300001' / '688001'
+        is_st:     是否为ST/*ST
+        round_to:  价格小数位数，默认2位
 
     Returns:
         涨停价（精确到分）
     """
     if prev_close <= 0:
-        return 0.0
+        raise ValueError(f"前收盘价必须为正数，当前值: {prev_close}")
 
-    limit_ratio, _ = _get_limit_ratio(code, is_st)
+    limit_ratio, _, market = _get_limit_ratio(code, is_st)
     raw = prev_close * (1.0 + limit_ratio)
-
-    # A股规则：round half up（四舍五入到分）
-    multiplier = 10 ** round_to
-    result = math.floor(raw * multiplier + 0.5) / multiplier
-    return max(result, 0.01)
+    return _round_limit_price(raw, round_to, market, prev_close)
 
 
 def calculate_price_limits(
@@ -81,9 +151,9 @@ def calculate_price_limits(
     """
     limit_up = calculate_limit_price(prev_close, code, is_st)
 
-    _, down_ratio = _get_limit_ratio(code, is_st)
+    _, down_ratio, market = _get_limit_ratio(code, is_st)
     raw_down = prev_close * (1.0 - down_ratio)
-    limit_down = math.floor(raw_down * 100 + 0.5) / 100
+    limit_down = _round_limit_price(raw_down, 2, market, prev_close)
     limit_down = max(limit_down, 0.01)
     return limit_up, limit_down
 
