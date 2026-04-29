@@ -444,6 +444,7 @@ class T1Predictor:
         self,
         stocks: List[Dict[str, Any]],
         market_stage: str,
+        is_st: bool = False,
     ) -> List[Dict[str, Any]]:
         """
         批量预测（用于选股阶段）。
@@ -455,6 +456,7 @@ class T1Predictor:
             'q1_vol_pct': 35.0,   # 可选
             'sector_strength': 0.8,  # 可选
         }]
+        is_st: 是否为ST股（决定涨停比例，ST=5% 非ST=10%）
         """
         from .classifier import MorphologyClassifier
         clf = MorphologyClassifier()
@@ -469,6 +471,7 @@ class T1Predictor:
                 base_price=s.get('base_close', s['open']),
                 q1_vol_pct=s.get('q1_vol_pct'),
                 q4_vol_pct=s.get('q4_vol_pct'),
+                is_st=is_st,
             )
             morph = clf.classify(f)
             pred = self.predict(f, morph, market_stage, sector_strength=s.get('sector_strength'))
