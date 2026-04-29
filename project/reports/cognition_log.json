@@ -317,5 +317,16 @@
     "beliefstore_writes": 0,
     "verified_at": "2026-04-27T22:11:58.157364",
     "emotion_lessons": []
+  },
+  {
+    "date": "2026-04-28",
+    "t1_date": "2026-04-29",
+    "score": "3/17 = 18%",
+    "accuracy": 0.176,
+    "total": 17,
+    "correct": 3,
+    "beliefstore_writes": 17,
+    "verified_at": "2026-04-29T16:31:24.500311",
+    "emotion_lessons": []
   }
 ]

@@ -37,6 +37,31 @@ class DataSource:
         self.pain = self.mc[MONGO_CONFIG['databases']['pain']][MONGO_CONFIG['collections']['pain_scores']]
         self.zhangting = self.mc[MONGO_CONFIG['databases']['zhangting']][MONGO_CONFIG['collections']['zhangting_strength']]
 
+        # ====== tushare 股票名称映射（懒加载，缓存）======
+        self._stock_name_map: Optional[Dict[str, str]] = None
+
+    def get_stock_name_map(self) -> Dict[str, str]:
+        """
+        返回 code -> name 映射字典（如 '000001' -> '平安银行'）。
+        首次调用从 tushare 拉取并缓存，后续直接返回。
+        5000只A股全覆盖，耗时约2秒。
+        """
+        if self._stock_name_map is None:
+            try:
+                import tushare as ts
+                pro = ts.pro_api('nMcLAIwJuihPPNuBFGlipYSTFwpgTuUspakrvypVZOoGCcXjZhJQkWftgGOxgspu')
+                pro._DataApi__http_url = 'http://111.170.34.57:8010/'
+                df = pro.stock_basic(limit=5000)
+                self._stock_name_map = {}
+                for _, row in df.iterrows():
+                    ts_code = row['ts_code']
+                    name = row['name']
+                    code = ts_code.replace('.SZ', '').replace('.SH', '')
+                    self._stock_name_map[code] = name
+            except Exception:
+                self._stock_name_map = {}
+        return self._stock_name_map
+
     def close(self):
         self.conn.close()
         self.mc.close()

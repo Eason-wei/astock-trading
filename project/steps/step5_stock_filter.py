@@ -527,7 +527,7 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
                     ds.save_zhangting_strength(
                         date=date,
                         stock_code=clean,
-                        stock_name=lb_info.get('name', mysql_key),
+                        stock_name=ds.get_stock_name_map().get(clean, '') or mysql_key,  # tushare 5000只全覆盖
                         zts=zts,
                     )
                     saved += 1
