@@ -64,8 +64,10 @@ class MorphologyMatrix:
         base_price: float,
         q1_vol_pct: Optional[float] = None,
         q4_vol_pct: Optional[float] = None,
+        code: str = "",
+        is_st: bool = False,
     ) -> MorphologyFeatures:
-        """从OHLC数据提取形态特征（无完整分钟数据时）"""
+        """从OHLC数据提取形态特征。code+is_st用于计算涨跌停价判断一字板。"""
         return self._clf.extract_from_ohlc(
             open_px=open_px,
             high_px=high_px,
@@ -74,6 +76,8 @@ class MorphologyMatrix:
             base_price=base_price,
             q1_vol_pct=q1_vol_pct,
             q4_vol_pct=q4_vol_pct,
+            code=code,
+            is_st=is_st,
         )
 
     # ============================================================

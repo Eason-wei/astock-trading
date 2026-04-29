@@ -377,6 +377,10 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
             continue
 
         mp = c.get('minute_pattern')
+        code = c.get('code', '')
+        # 从股票名称判断是否ST（用于涨跌停比例计算）
+        name = c.get('name', c.get('stock_name', ''))
+        is_st = name.startswith(('ST', '*ST', 'S*'))
 
         # 有分钟数据（字典）→ 用MorphologyMatrix精细预测
         if mp and isinstance(mp, dict):
@@ -388,6 +392,8 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
                 base_price=mp.get('base_price', mp.get('open_px', 1)),
                 q1_vol_pct=mp.get('q1_vol_pct'),
                 q4_vol_pct=mp.get('q4_vol_pct'),
+                code=code,       # 传入code以正确计算涨跌停价（科创板20%/ST 5%等）
+                is_st=is_st,     # 传入is_st以区分ST股的涨跌停比例
             )
             morph = mm.classify(features)
             pred = mm.predict(features, morph, qingxu, sector_strength=sector_strength)

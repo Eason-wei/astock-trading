@@ -260,10 +260,18 @@ class MorphologyClassifier:
         base_price: float,
         q1_vol_pct: Optional[float] = None,
         q4_vol_pct: Optional[float] = None,
+        code: str = "",
+        is_st: bool = False,
     ) -> MorphologyFeatures:
         """
         从OHLC数据提取形态特征（无完整分钟数据时使用）。
-        q1_vol_pct / q4_vol_pct 从外部传入（如从MySQL统计得出）
+        q1_vol_pct / q4_vol_pct 从外部传入（如从MySQL统计得出）。
+
+        code 参数用于计算涨跌停价，以判断是否真正的一字板
+        （每分钟价格都等于涨停价）。若不传 code，一字板判断
+        fallback 到 amplitude<3% 近似，精度降低。
+
+        is_st 决定 ST 股的涨跌停比例（5% 而非 10%）。
         """
         open_pct = (open_px - base_price) / base_price * 100
         close_pct = (close_px - base_price) / base_price * 100
@@ -276,16 +284,38 @@ class MorphologyClassifier:
         is_limit_up = close_pct >= 9.5
         f30 = q1_vol_pct if q1_vol_pct is not None else 0.0
 
-        # ── board_quality 细粒度判断（与 _judge_board_quality 保持一致）──
-        # 涨停一字板：close_pct >= 9.5% 且 amplitude < 3%
-        # 跌停一字板：close_pct <= -9.5% 且 amplitude < 3%
-        # 普通一字板：amplitude < 3% 且非涨跌停
+        # ── 一字板精确判断（需要 code 才能计算涨跌停价）────────────
+        # 一字板定义：全天每一分钟的价格都等于涨停价
+        # OHLC 没有逐分钟明细，用 close 是否等于涨停价来判断
+        # （收盘在涨停价 = 全天大部分时间在涨停价的强信号）
+        if code:
+            limit_up, limit_down = _calculate_limit_prices(base_price, code, is_st=is_st)
+            # 收盘在涨停价 → 一字板；收盘不在涨停价 → 不是一字板
+            at_limit = 1 if abs(close_px - limit_up) < 0.005 else 0
+            at_lower = 1 if abs(close_px - limit_down) < 0.005 else 0
+            consistency_at_limit = float(at_limit)  # 0.0 或 1.0
+            consistency_at_lower = float(at_lower)
+        else:
+            limit_up = limit_down = None
+            consistency_at_limit = 0.0  # 未知，触发 fallback 逻辑
+            consistency_at_lower = 0.0
+
+        # ── board_quality 细粒度判断 ───────────────────────────
+        # 涨停一字板：close_pct >= 9.5% 且 每分钟价格都在涨停价（consistency>=0.99）
+        #            或无 code 时 fallback 到 amplitude < 3%
+        # 跌停一字板：close_pct <= -9.5% 且 每分钟价格都在跌停价
+        # 普通一字板：amplitude < 3% 且非涨跌停（极窄幅震荡）
         # 烂板：amplitude >= 3% 且涨停后炸开 high_pct - close_pct > 3
         # 实体板：amplitude >= 3% 且正常涨停
         # 非涨停：未涨停
-        if close_pct >= 9.5 and amplitude < 3:
+        if consistency_at_limit >= 0.99:
             board_quality = '涨停一字板'
-        elif close_pct <= -9.5 and amplitude < 3:
+        elif consistency_at_limit == 0.0 and close_pct >= 9.5 and amplitude < 3:
+            # 无 code 时的 fallback：用 amplitude 近似
+            board_quality = '涨停一字板'
+        elif consistency_at_lower >= 0.99:
+            board_quality = '跌停一字板'
+        elif consistency_at_lower == 0.0 and close_pct <= -9.5 and amplitude < 3:
             board_quality = '跌停一字板'
         elif amplitude < 3:
             board_quality = '普通一字板'
@@ -327,6 +357,8 @@ class MorphologyClassifier:
             amplitude=round(amplitude, 2),
             push_up_style=push_style,
             board_quality=board_quality,
+            consistency_at_limit=round(consistency_at_limit, 4),
+            consistency_at_lower=round(consistency_at_lower, 4),
         )
 
     # ============================================================
