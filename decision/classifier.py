@@ -91,7 +91,7 @@ class MorphologyClassifier:
     # 特征提取：从241点分钟数据
     # ============================================================
 
-    def extract_features(self, minute_data: List[Dict]) -> MorphologyFeatures:
+    def extract_features(self, minute_data: List[Dict], code: str = "") -> MorphologyFeatures:
         """
         从241点分钟数据提取形态特征。
 
@@ -100,6 +100,12 @@ class MorphologyClassifier:
           {'price': 10.6, 'volume': 1200, 'time': '09:31'},
           ...
         ]
+
+        Args:
+            minute_data: 241点分钟数据列表
+            code: 股票代码（如 '688531.SH'），用于计算涨跌停价。
+                  若 minute_data 中无 code 字段，必须传入；否则科创板/创业板
+                  会因默认主板比例导致涨停价计算错误。
         """
         prices = [d['price'] for d in minute_data if d.get('price') is not None]
         volumes = [d['volume'] for d in minute_data if d.get('volume') is not None]
@@ -158,9 +164,10 @@ class MorphologyClassifier:
         )
 
         # ── 一字板精确判断：逐分钟价格一致性 ──────────────────────
-        # 计算涨停价/跌停价
-        code = minute_data[0].get('code', '')
-        limit_up, limit_down = _calculate_limit_prices(base_price, code)
+        # 涨跌停价计算需要正确的市场（科创板20%/创业板20% ≠ 主板10%）
+        # code 优先从参数传入，其次从 minute_data 字段
+        _code = code or minute_data[0].get('code', '')
+        limit_up, limit_down = _calculate_limit_prices(base_price, _code)
 
         total_minutes = len(prices)
         at_limit_count = sum(1 for p in prices if abs(p - limit_up) < 0.005)

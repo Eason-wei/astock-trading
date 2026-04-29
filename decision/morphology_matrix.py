@@ -12,7 +12,7 @@ morphology_matrix.py - 形态×阶段 T+1 预测矩阵（Facade）
 
 用法（保持不变）：
   mm = MorphologyMatrix()
-  features = mm.extract_features(minute_data)  # 241点数据
+  features = mm.extract_features(minute_data, code='688531.SH')  # 241点数据，code用于涨跌停价
   morph = mm.classify(features)
   result = mm.predict(features, morph, '高潮期', sector_strength=0.8)
 """
@@ -51,9 +51,9 @@ class MorphologyMatrix:
     # 特征提取（委托给 MorphologyClassifier）
     # ============================================================
 
-    def extract_features(self, minute_data: List[Dict]) -> MorphologyFeatures:
+    def extract_features(self, minute_data: List[Dict], code: str = "") -> MorphologyFeatures:
         """从241点分钟数据提取形态特征"""
-        return self._clf.extract_features(minute_data)
+        return self._clf.extract_features(minute_data, code=code)
 
     def extract_from_ohlc(
         self,
