@@ -35,6 +35,7 @@ class DataSource:
         self.lianban = self.mc[MONGO_CONFIG['databases']['lianban']][MONGO_CONFIG['collections']['lianban_data']]
         self.jiuyang = self.mc[MONGO_CONFIG['databases']['jiuyang']][MONGO_CONFIG['collections']['analysis']]
         self.pain = self.mc[MONGO_CONFIG['databases']['pain']][MONGO_CONFIG['collections']['pain_scores']]
+        self.zhangting = self.mc[MONGO_CONFIG['databases']['zhangting']][MONGO_CONFIG['collections']['zhangting_strength']]
 
     def close(self):
         self.conn.close()
@@ -111,6 +112,83 @@ class DataSource:
         if signals is not None: doc['signals'] = signals
         if warnings is not None: doc['warnings'] = warnings
         self.pain.update_one({'date': date}, {'$set': doc}, upsert=True)
+
+    # ====== zhangting_strength（涨停强度因子ABC）======
+    def save_zhangting_strength(self, date: str, stock_code: str,
+                                stock_name: str, zts: Dict) -> None:
+        """
+        保存某日某只股票的涨停强度因子ABC计算结果。
+        用 code + date 做唯一索引，upsert 幂等。
+
+        zts 格式：_compute_zhangting_strength() 返回的完整字典，
+        包含 A1~A4/B1~B4/C1~C3 分项得分 + 综合 score + minute_pattern。
+        """
+        doc = {
+            'date': date,
+            'code': stock_code,        # 纯数字如 '000062'
+            'stock_name': stock_name,
+            # 顶层透传，方便 MongoDB 内直接按 score 排序
+            'score': zts.get('score', 0),
+            # A时间结构
+            'A1_first_hit_min': zts.get('A1_first_hit_min'),
+            'A2_total_seal_min': zts.get('A2_total_seal_min'),
+            'A3_zhaban_cnt': zts.get('A3_zhaban_cnt'),
+            'A4_max_open_min': zts.get('A4_max_open_min'),
+            # B价格形态
+            'B1_open_chg': zts.get('B1_open_chg'),
+            'B2_amp': zts.get('B2_amp'),
+            'B3_post_limit_vwap': zts.get('B3_post_limit_vwap'),
+            'B3_relative_vwap': zts.get('B3_relative_vwap'),
+            'B4_smoothness': zts.get('B4_smoothness'),
+            'B4_scheme': zts.get('B4_scheme', 'none'),
+            'B4_accel_ratio': zts.get('B4_accel_ratio'),
+            'B4_vol_ratio': zts.get('B4_vol_ratio'),
+            'B4_squeeze_ratio': zts.get('B4_squeeze_ratio'),
+            'B4_max_dd': zts.get('B4_max_dd'),
+            # C量能结构
+            'C1_seal_pct': zts.get('C1_seal_pct'),
+            'C2_limit_ratio': zts.get('C2_limit_ratio'),
+            'C3_pre_touch_pct': zts.get('C3_pre_touch_pct'),
+            # 综合标记
+            'is_on_limit': zts.get('is_on_limit', False),
+            # 分项得分（原样保存，供 step6 调试参考）
+            '_sub_scores': zts.get('_sub_scores', {}),
+        }
+        self.zhangting.update_one(
+            {'date': date, 'code': stock_code},
+            {'$set': doc},
+            upsert=True
+        )
+
+    def get_zhangting_strength(self, date: str, stock_code: str) -> Optional[Dict]:
+        """
+        查询某日某只股票的涨停强度因子结果（不含 MongoDB _id）。
+        返回 None 表示该股票当日无 ABC 数据。
+        """
+        return self.zhangting.find_one(
+            {'date': date, 'code': stock_code},
+            {'_id': 0}
+        )
+
+    def get_zhangting_strengths(self, date: str,
+                                 min_score: float = 0.0,
+                                 limit: int = 200) -> List[Dict]:
+        """
+        查询某日全部涨停股票的 ABC 因子，按 score 降序。
+
+        Args:
+            date:       交易日期
+            min_score:  最低总分过滤（默认0=不过滤）
+            limit:      最多返回条数（默认200）
+
+        Returns:
+            List[Dict]，每元素含全部 ABC 分项 + score，按 score 降序。
+        """
+        cursor = self.zhangting.find(
+            {'date': date, 'score': {'$gte': min_score}},
+            {'_id': 0}
+        ).sort('score', pymongo.DESCENDING).limit(limit)
+        return list(cursor)
 
     # ====== MySQL分钟数据 ======
     # P2-④修复：cursor 异常路径泄漏 → 用 try/finally 保证 close()

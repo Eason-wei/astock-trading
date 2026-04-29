@@ -164,7 +164,8 @@ def run(step1, step2, step3, step4, step5, fupan=None, ds=None, **kwargs) -> dic
         }
 
     # ===== 3. 候选股T+1形态预判（核心新增）=====
-    stock_preds = _predict_stocks(mm, step5, qingxu, step2, step4)
+    # 改善2+3：传入 ds + date，使 _predict_stocks 能查询 MongoDB ABC 因子
+    stock_preds = _predict_stocks(mm, step5, qingxu, step2, step4, ds=ds, date=date)
     result['stock_predictions'] = stock_preds
 
     # ===== 4. 仓位计划 =====
@@ -307,10 +308,17 @@ def _predict_emotion(qingxu: str, degree: int, step1, step4) -> dict:
     }
 
 
-def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4) -> list:
+def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
+                    ds=None, date: str = None) -> list:
     """
     对候选股进行T+1形态预判（核心函数）
     使用MorphologyMatrix的5条规则
+
+    新增（2026-05-02 改善2+3）：
+      - ds 参数：DataSource实例，用于查询 MongoDB zhangting_strength 集合
+      - date 参数：交易日期，用于构造 MongoDB 查询条件
+      - strength 前置过滤：ABC总分 < 30 → 直接排除（封板质量不过关不参与）
+      - ABC因子注入：结果中包含完整11因子，供仓位决策参考
     """
     candidates = step5.get('candidates', [])
     if not candidates:
@@ -330,6 +338,26 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4) -> l
 
     stock_preds = []
     for c in candidates:
+        code = c.get('code', '')
+
+        # ── 改善2：从 MongoDB 查询涨停强度因子（ABC体系）───────────────
+        # 优先用 MongoDB 数据（当日计算结果），其次用 step5 内存数据
+        zts = None
+        if ds and date and code:
+            try:
+                zts = ds.get_zhangting_strength(date, code)
+            except Exception:
+                pass
+        if zts is None:
+            # MongoDB 无数据时降级用 step5 内存结果（_zts 字段）
+            zts = c.get('_zts', {})
+        strength = zts.get('score', c.get('strength', 0)) if zts else c.get('strength', 0)
+
+        # ── 改善3：ABC总分前置过滤器（封板质量不过关直接排除）─────────
+        # score < 30 → 封板质量差，不参与 T+1 预判
+        if strength < 30:
+            continue
+
         mp = c.get('minute_pattern')
 
         # 有分钟数据（字典）→ 用MorphologyMatrix精细预测
@@ -402,7 +430,7 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4) -> l
                 can_enter = False  # negative方向不开仓
 
         stock_preds.append({
-            'code': c.get('code', ''),
+            'code': code,
             'name': c.get('name', ''),
             'plate': c.get('plate', ''),
             'ban_tag': c.get('ban_tag', ''),
@@ -415,6 +443,26 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4) -> l
             'warnings': pred.get('warnings', []),
             'sector_boost': pred.get('sector_boost', 0.0),
             'can_enter': can_enter,
+            # ── 改善2+3：ABC涨停强度因子（来自MongoDB，注入结果）────────
+            'strength': strength,
+            'B4_smoothness': zts.get('B4_smoothness', c.get('B4_smoothness', 0)) if zts else c.get('B4_smoothness', 0),
+            'B4_scheme': zts.get('B4_scheme', c.get('B4_scheme', 'none')) if zts else c.get('B4_scheme', 'none'),
+            'is_on_limit': zts.get('is_on_limit', c.get('is_on_limit', False)) if zts else c.get('is_on_limit', False),
+            # 11因子分项（供仓位决策参考）
+            '_abc': {
+                'A1_first_hit_min': zts.get('A1_first_hit_min') if zts else None,
+                'A2_total_seal_min': zts.get('A2_total_seal_min') if zts else None,
+                'A3_zhaban_cnt': zts.get('A3_zhaban_cnt') if zts else None,
+                'A4_max_open_min': zts.get('A4_max_open_min') if zts else None,
+                'B1_open_chg': zts.get('B1_open_chg') if zts else None,
+                'B2_amp': zts.get('B2_amp') if zts else None,
+                'B3_relative_vwap': zts.get('B3_relative_vwap') if zts else None,
+                'B4_smoothness': zts.get('B4_smoothness') if zts else None,
+                'C1_seal_pct': zts.get('C1_seal_pct') if zts else None,
+                'C2_limit_ratio': zts.get('C2_limit_ratio') if zts else None,
+                'C3_pre_touch_pct': zts.get('C3_pre_touch_pct') if zts else None,
+                '_sub_scores': zts.get('_sub_scores', {}) if zts else {},
+            },
         })
 
     # 按置信度排序

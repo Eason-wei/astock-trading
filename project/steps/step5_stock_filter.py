@@ -158,7 +158,17 @@ def calculate_price_limits(
     return limit_up, limit_down
 
 
-def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None, **kwargs) -> Dict[str, Any]:
+def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
+         ds=None, **kwargs) -> Dict[str, Any]:
+    """
+    Step 5: 成分股筛选
+    输入：lianban_data连板股 + jiuyangongshe题材数据 + MySQL分钟数据
+    输出：候选标的列表 + 筛选理由 + 分钟形态检查 + 涨停强度因子
+
+    新增（2026-05-02）：
+      - ds 参数可选，若提供则将所有候选股的 ABC 因子结果批量写入 MongoDB
+        zhangting_strength 集合，供 step6 T+1 预判实时查询。
+    """
     date = lianban.get('date')
     result = {
         'date': date,
@@ -476,6 +486,28 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None, **kw
         result['verdict'] = f"找到{len(included)}只候选标的，可结合分钟形态进一步筛选"
     else:
         result['verdict'] = "无符合条件候选标的，主线龙头位置过高，建议观望"
+
+    # ── ABC因子批量写入 MongoDB（改善1）───────────────────────────────
+    # 对所有在 lianban 里有分钟数据的股票（包括入选和排除的），
+    # 将 _compute_zhangting_strength() 结果写入 zhangting_strength 集合。
+    # step6 可实时查询任意股票的 ABC 因子作为前置过滤器。
+    if ds is not None and date:
+        saved = 0
+        for c in candidates_out:
+            zts = c.get('_zts', {})
+            if zts and zts.get('score', 0) > 0:
+                try:
+                    ds.save_zhangting_strength(
+                        date=date,
+                        stock_code=c.get('code', ''),
+                        stock_name=c.get('name', ''),
+                        zts=zts,
+                    )
+                    saved += 1
+                except Exception as e:
+                    # MongoDB写入失败不影响主流程，仅警告
+                    pass
+        result['_mongo_save'] = {'zhangting_strength_saved': saved}
 
     return result
 

@@ -95,6 +95,7 @@ s5 = step5_stock_filter.run(
     ds.get_lianban(TARGET_DATE),
     ds.get_jiuyang(TARGET_DATE),
     ds.get_mysql_minutes_fast(TARGET_DATE),
+    ds=ds,        # 传入DataSource，写入zhangting_strength集合
 )
 print(f"  candidates count={len(s5.get('candidates', []))}")
 

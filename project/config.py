@@ -22,12 +22,14 @@ MONGO_CONFIG = {
         'lianban': 'vip_fupanwang',    # VIP复盘网-连板天梯
         'jiuyang': 'jiuyangongshe',    # 韭研公社
         'pain': 'vip_fupanwang',       # 亏钱效应评分历史
+        'zhangting': 'vip_fupanwang',   # 涨停强度因子
     },
     'collections': {
         'fupan_data': 'fupan_data',    # 情绪数据
         'lianban_data': 'lianban_data', # 连板天梯
         'analysis': 'analysis',         # 题材分析
         'pain_scores': 'pain_effect_scores',  # 亏钱效应评分历史
+        'zhangting_strength': 'zhangting_strength',  # 涨停强度因子ABC
     }
 }
 
