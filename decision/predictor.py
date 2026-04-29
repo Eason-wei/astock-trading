@@ -457,6 +457,7 @@ class T1Predictor:
             'sector_strength': 0.8,  # 可选
         }]
         is_st: 是否为ST股（决定涨停比例，ST=5% 非ST=10%）
+        Bug51修复：stocks中需包含code字段，用于区分科创板/创业板20%涨跌停
         """
         from .classifier import MorphologyClassifier
         clf = MorphologyClassifier()
@@ -472,6 +473,7 @@ class T1Predictor:
                 q1_vol_pct=s.get('q1_vol_pct'),
                 q4_vol_pct=s.get('q4_vol_pct'),
                 is_st=is_st,
+                code=s.get('code'),
             )
             morph = clf.classify(f)
             pred = self.predict(f, morph, market_stage, sector_strength=s.get('sector_strength'))

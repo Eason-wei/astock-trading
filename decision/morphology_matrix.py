@@ -65,12 +65,11 @@ class MorphologyMatrix:
         q1_vol_pct: Optional[float] = None,
         q4_vol_pct: Optional[float] = None,
         is_st: bool = False,
+        code: Optional[str] = None,
     ) -> MorphologyFeatures:
         """
         从OHLC数据提取形态特征（无逐分钟明细时的降级路径）。
-        一字板判断用 amplitude<3% 近似，无法做到"241个时间点都在涨停价"的精确判断。
-        若有完整分钟数据，应调用 extract_features()。
-        is_st 区分ST股涨停阈值（5%）与非ST（10%）。
+        Bug51修复：新增code参数，正确区分科创板/创业板20%涨跌停。
         """
         return self._clf.extract_from_ohlc(
             open_px=open_px,
@@ -81,6 +80,7 @@ class MorphologyMatrix:
             q1_vol_pct=q1_vol_pct,
             q4_vol_pct=q4_vol_pct,
             is_st=is_st,
+            code=code,
         )
 
     # ============================================================
@@ -130,9 +130,10 @@ class MorphologyMatrix:
         self,
         stocks: List[Dict[str, Any]],
         market_stage: str,
+        is_st: bool = False,
     ) -> List[Dict[str, Any]]:
-        """批量预测"""
-        return self._pred.predict_batch(stocks, market_stage)
+        """批量预测。Bug51修复：透传is_st和code参数。"""
+        return self._pred.predict_batch(stocks, market_stage, is_st=is_st)
 
     # ============================================================
     # 以下为遗留方法，保持签名兼容

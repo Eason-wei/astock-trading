@@ -261,6 +261,7 @@ class MorphologyClassifier:
         q1_vol_pct: Optional[float] = None,
         q4_vol_pct: Optional[float] = None,
         is_st: bool = False,
+        code: Optional[str] = None,
     ) -> MorphologyFeatures:
         """
         从OHLC数据提取形态特征（无完整分钟数据时的降级路径）。
@@ -270,13 +271,21 @@ class MorphologyClassifier:
         由于没有逐分钟明细，无法判断"241个时间点是否都等于涨停价"。
         若需要精确判断，应调用 extract_features(241点分钟数据)。
 
-        is_st 用于区分涨停判断阈值：ST股涨停比例5%，非ST股涨停比例10%。
-        非ST：close_pct >= 9.5% → 涨停相关判断
-        ST：   close_pct >= 4.5% → 涨停相关判断
+        is_st 用于区分涨跌停判断阈值（ST股更窄）。
+        code 用于区分市场类型（主板/科创板/创业板/北交所）。
+        Bug51修复：新增code参数后，可正确区分科创板/创业板20%涨跌停与主板10%涨跌停。
+
+        涨跌停阈值：
+          主板(非ST): 10%  (close_pct >= 9.5% 视为涨停)
+          主板(ST):    5%  (close_pct >= 4.5% 视为涨停)
+          科创/创业(非ST): 20% (close_pct >= 19.5% 视为涨停)
+          科创/创业(ST):   10% (close_pct >= 9.5% 视为涨停)
+          北交所(非ST): 30%  (close_pct >= 29.5% 视为涨停)
+          北交所(ST):   15%  (close_pct >= 14.5% 视为涨停)
 
         board_quality 判断（无逐分钟明细，用 amplitude 近似）：
-          涨停一字板：amplitude < 3% 且 涨停（ST:>=4.5%, 非ST:>=9.5%）
-          跌停一字板：amplitude < 3% 且 跌停（ST:<=-4.5%, 非ST:<=-9.5%）
+          涨停一字板：amplitude < 3% 且 涨停
+          跌停一字板：amplitude < 3% 且 跌停
           普通一字板：amplitude < 3% 且非涨跌停
           烂板：amplitude >= 3% 且涨停后炸开 high_pct - close_pct > 3
           实体板：amplitude >= 3% 且正常涨停
@@ -298,8 +307,18 @@ class MorphologyClassifier:
 
         amplitude = (high_px - low_px) / base_price * 100
 
-        # 涨停阈值：ST股5%，非ST股10%
-        limit_threshold = 4.5 if is_st else 9.5
+        # 涨跌停阈值：根据市场类型(code)和is_st共同决定
+        # Bug51修复：从单一is_st判断改为市场+ST联合判断
+        pure = (code or '').strip().split('.')[0] if code else ''
+        if pure.startswith('688') or pure.startswith('300') or pure.startswith('301'):
+            # 科创板/创业板：非ST=20%，ST=10%
+            limit_threshold = 9.5 if is_st else 19.5
+        elif (pure.startswith('9') or pure.startswith('8')) and len(pure) == 6:
+            # 北交所：非ST=30%，ST=15%
+            limit_threshold = 14.5 if is_st else 29.5
+        else:
+            # 主板：非ST=10%，ST=5%
+            limit_threshold = 4.5 if is_st else 9.5
         is_limit_up = close_pct >= limit_threshold
 
         f30 = q1_vol_pct if q1_vol_pct is not None else 0.0
