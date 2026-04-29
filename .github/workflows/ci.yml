@@ -1,0 +1,68 @@
+name: A股交易系统 CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install pymysql pymongo
+
+      - name: Run 54 matrix tests
+        run: |
+          cd /Users/eason/.hermes
+          source venv/bin/activate 2>/dev/null || true
+          PYTHONPATH=/Users/eason/.hermes/trading_study \
+          python verify/test_morphology_matrix_54.py
+        env:
+          PYTHONPATH: /Users/eason/.hermes/trading_study
+
+      - name: Run propagation engine
+        run: |
+          cd /Users/eason/.hermes
+          source venv/bin/activate 2>/dev/null || true
+          PYTHONPATH=/Users/eason/.hermes/trading_study \
+          python verify/propagation_engine.py --min-confidence 0.5
+        env:
+          PYTHONPATH: /Users/eason/.hermes/trading_study
+
+  propagation-check:
+    runs-on: ubuntu-latest
+    # 只在config修改时运行
+    if: contains(github.event.head_commit.modified_files, 'decision/config/morphology_config.json')
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install pymysql pymongo
+
+      - name: Run propagation engine (strict mode)
+        run: |
+          cd /Users/eason/.hermes
+          source venv/bin/activate 2>/dev/null || true
+          PYTHONPATH=/Users/eason/.hermes/trading_study \
+          python verify/propagation_engine.py --min-confidence 0.8
+        env:
+          PYTHONPATH: /Users/eason/.hermes/trading_study
