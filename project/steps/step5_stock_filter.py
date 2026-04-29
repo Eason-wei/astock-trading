@@ -881,7 +881,8 @@ def _compute_zhangting_strength(
                 if scheme2_valid:
                     smoothness = b4_accel_score * 0.60 + b4_vol_score * 0.40
                 else:
-                    smoothness = b4_accel_score  # 只有方案①有效时，100%权重
+                    # half < 5：方案①前半段数据不足，40%权重改给方案②（vol_score 计算本身有效）
+                    smoothness = b4_accel_score * 0.60 + b4_vol_score * 0.40
             elif first_hit <= 180:
                 # 中后盘封板 → 方案①（40%）+ 方案②（40%）+ 方案③（20%）
                 b4_scheme = 'mid'
