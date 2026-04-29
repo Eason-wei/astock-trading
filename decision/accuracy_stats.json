@@ -5,28 +5,28 @@
       "total": 8
     },
     "B类正常涨停": {
-      "correct": 39,
-      "total": 77,
-      "profit_sum": 92.87999999999997,
-      "profit_count": 40
+      "correct": 40,
+      "total": 80,
+      "profit_sum": 96.46999999999997,
+      "profit_count": 42
     },
     "C1冲高回落": {
       "correct": 0,
-      "total": 17,
+      "total": 18,
       "profit_sum": 3.1500000000000004,
       "profit_count": 8
     },
     "E2宽幅震荡": {
-      "correct": 1,
-      "total": 39
+      "correct": 2,
+      "total": 42
     },
     "A类一字板": {
       "correct": 7,
       "total": 41
     },
     "E1普通波动": {
-      "correct": 24,
-      "total": 257
+      "correct": 25,
+      "total": 267
     }
   },
   "修复期": {

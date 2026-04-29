@@ -51,12 +51,13 @@ class DataSource:
                 import tushare as ts
                 pro = ts.pro_api('nMcLAIwJuihPPNuBFGlipYSTFwpgTuUspakrvypVZOoGCcXjZhJQkWftgGOxgspu')
                 pro._DataApi__http_url = 'http://111.170.34.57:8010/'
-                df = pro.stock_basic(limit=5000)
+                df = pro.stock_basic(limit=10000)
                 self._stock_name_map = {}
                 for _, row in df.iterrows():
                     ts_code = row['ts_code']
                     name = row['name']
-                    code = ts_code.replace('.SZ', '').replace('.SH', '')
+                    # 纯数字code: 000001.SZ → 000001, 920177.BJ → 920177
+                    code = ts_code.replace('.SZ', '').replace('.SH', '').replace('.BJ', '')
                     self._stock_name_map[code] = name
             except Exception:
                 self._stock_name_map = {}
