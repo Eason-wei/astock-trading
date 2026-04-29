@@ -318,11 +318,17 @@ class MorphologyClassifier:
         else:
             q1_e = q2_e = q3_e = q4_e = 25.0
 
-        # 拉升方式（无分钟数据，用 amplitude+close_pct 估算）
-        if amplitude < 3 and close_pct > limit_threshold:
-            push_style = '早盘脉冲'
-        elif close_pct > 5 and amplitude > 5:
-            push_style = '全天稳健'
+        # 拉升方式（无分钟数据，用 OHLC 估算）
+        # 判断逻辑：全天高位震荡+振幅小 → 一字板(早盘已封)
+        #         全天大部分时间在低位+尾盘急拉 → 尾盘偷袭
+        #         其他 → 全天稳健
+        mid_pct = (high_pct + low_pct) / 2
+        is_near_limit = amplitude < 3 and close_pct >= limit_threshold
+        is_tail_push = close_pct <= 1 and low_pct < mid_pct - 3
+        if is_near_limit:
+            push_style = '早盘脉冲'    # 一字板早盘封死
+        elif is_tail_push:
+            push_style = '尾盘偷袭'
         else:
             push_style = '全天稳健'
 
@@ -366,11 +372,13 @@ class MorphologyClassifier:
           10. E1：普通波动（amp<5%，兜底）
         """
         # ── ① A类涨停一字板 ────────────────────────────────────
-        # 有分钟数据：逐分钟一致性（>=99%才是一字板）；无分钟数据：fallback到board_quality近似
+        # 有分钟数据：逐分钟一致性（>=99%才是一字板）
         if f.consistency_at_limit >= 0.99:
             return Morphology.A
+        # 无分钟数据（extract_from_ohlc路径）：
+        # consistency_at_limit 保持默认值 0.0（表明未计算逐分钟数据）
+        # board_quality='涨停一字板' 是 OHLC 近似的判断，用作 fallback
         if f.consistency_at_limit == 0.0 and f.board_quality == '涨停一字板':
-            # extract_from_ohlc路径，consistency未计算，用旧近似逻辑
             return Morphology.A
 
         # ── ② D1跌停一字板 ────────────────────────────────────
@@ -380,7 +388,8 @@ class MorphologyClassifier:
             return Morphology.D1
 
         # B类：正常涨停（换手充分，稳健）
-        if f.close_pct >= 9.5 and f.amplitude < 8:
+        # 阈值12%：真实涨停股振幅通常在8-15%（开板后再封是常态），amplitude<12%可覆盖
+        if f.close_pct >= 9.5 and f.amplitude < 12:
             return Morphology.B
 
         # C1：冲高回落（收盘涨幅远小于最高点涨幅，振幅大）

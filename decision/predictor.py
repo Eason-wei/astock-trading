@@ -234,16 +234,8 @@ class T1Predictor:
                         'final_confidence': max(0.65, 0.80 + conf_adj),
                     }
                 else:  # 升温期/修复期/冰点期
-                    return {
-                        'morphology': morphology.value,
-                        't1_direction': 'neutral',
-                        't1_expected_change': '-1%~+2%',
-                        'confidence': 0.55,
-                        'rule_applied': 'D2规则(升温/修复/冰点)：降级为中性',
-                        'warnings': ['D2尾盘偷袭在修复期降级为中性'],
-                        'sector_boost': 0.0,
-                        'final_confidence': 0.55,
-                    }
+                    # 走通用路径，让 JSON stage_overrides 处理
+                    return None
 
         # 规则4：A类一字板——仅在冰点/升温/修复期有效，降温/退潮/高潮期降权或排除
         if morphology == Morphology.A:

@@ -377,7 +377,6 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
             continue
 
         mp = c.get('minute_pattern')
-        code = c.get('code', '')
         # 从股票名称判断是否ST（用于涨跌停比例计算）
         name = c.get('name', c.get('stock_name', ''))
         is_st = name.startswith(('ST', '*ST', 'S*'))
@@ -470,7 +469,6 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
             'plate': c.get('plate', ''),
             'ban_tag': c.get('ban_tag', ''),
             'morphology': morph.value if hasattr(morph, 'value') else str(morph),
-            'morphology_name': pred.get('morphology', ''),
             't1_direction': pred.get('t1_direction', 'neutral'),
             't1_expected_change': pred.get('t1_expected_change', 'N/A'),
             'confidence': pred.get('final_confidence', 0.5),
@@ -591,7 +589,7 @@ def _build_action_items(step5, stock_preds, position_plan, qingxu, tq_result) ->
         rule = p.get('rule_applied', '')[:30]
         items.append(
             f"[关注] {p['name']}({p['plate']}) "
-            f"{p['morphology_name']} | "
+            f"{p['morphology']} | "
             f"T+1:{p['t1_direction']} {p['t1_expected_change']} | "
             f"置信度:{p['confidence']:.0%} | {rule}"
         )
@@ -622,7 +620,7 @@ def _best_prediction(stock_preds: list) -> str:
     if not stock_preds:
         return 'N/A'
     best = stock_preds[0]
-    return f"{best['name']} {best['morphology_name']} {best['confidence']:.0%}"
+    return f"{best['name']} {best['morphology']} {best['confidence']:.0%}"
 
 
 def _build_matrix(predictions: list, position_plan: dict, tq_result) -> str:
