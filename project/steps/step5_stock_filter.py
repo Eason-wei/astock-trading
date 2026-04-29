@@ -391,7 +391,11 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
             form = _check_minute_pattern(mins)
             # prev_close（昨收）从分钟数据的 base_price 字段读取，传给 _compute_zhangting_strength
             prev_close = float(mins[0].get('base_price', 0)) if mins else 0.0
-            zts = _compute_zhangting_strength(mins, code, prev_close)
+            # is_st 从 lianban_code_map 获取（ST股涨跌停比例=5%，非ST=10%/20%）
+            _clean_code = code.replace('.SZ','').replace('.SH','').replace('.BJ','').strip()
+            _is_st = isinstance(lianban_code_map.get(_clean_code, {}).get('name', ''), str) \
+                     and lianban_code_map.get(_clean_code, {}).get('name', '').startswith(('ST', '*ST', 'S*'))
+            zts = _compute_zhangting_strength(mins, code, prev_close, is_st=_is_st)
             # 形态不健康标记（不排除，仅标记，供step6参考）
             if form and form['form'] in ('一字板', '尾盘砸盘'):
                 form_warn = form['form']
@@ -501,8 +505,10 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
             # 从 mysql_key 反推纯数字 code（如 '603095.SH' → '603095', '920011.BJ' → '920011'）
             clean = mysql_key.replace('.SZ', '').replace('.SH', '').replace('.BJ', '').strip()
 
-            # 判断是否 ST（ST股涨跌停比例不同）
+            # 判断是否 ST（ST股涨跌停比例不同，用于涨跌停价计算）
             lb_info = lianban_code_map.get(clean, {})
+            stock_name = lb_info.get('name', '')
+            is_st = isinstance(stock_name, str) and stock_name.startswith(('ST', '*ST', 'S*'))
 
             # 昨收价从分钟数据 base_price 读取
             prev_close = float(mins[0].get('base_price', 0)) if mins else 0.0
@@ -519,7 +525,7 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
             if existing_zts:
                 zts = existing_zts
             else:
-                zts = _compute_zhangting_strength(mins, clean, prev_close)
+                zts = _compute_zhangting_strength(mins, clean, prev_close, is_st=is_st)
 
             # 只写入确实触板的（score > 0），避免噪音
             if zts and zts.get('score', 0) > 0:
@@ -527,7 +533,8 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
                     ds.save_zhangting_strength(
                         date=date,
                         stock_code=clean,
-                        stock_name=ds.get_stock_name_map().get(clean, '') or mysql_key,  # tushare 5000只全覆盖
+                        # 优先用 lianban 的名称（含ST前缀），其次用 tushare，再次用 mysql_key
+                        stock_name=lb_info.get('name', '') or ds.get_stock_name_map().get(clean, '') or mysql_key,
                         zts=zts,
                     )
                     saved += 1
@@ -620,6 +627,7 @@ def _compute_zhangting_strength(
     mins: List[Dict],
     code: str,
     prev_close: float,
+    is_st: bool = False,
 ) -> Dict[str, Any]:
     """
     计算个股涨停强度因子。
@@ -628,6 +636,7 @@ def _compute_zhangting_strength(
         mins       — MySQL 分钟数据列表（241条，9:30~15:00）
         code       — 股票代码，纯数字如 '000062'
         prev_close — 昨收价（base_price）
+        is_st      — 是否为ST股（决定涨跌停比例：ST=5%，非ST=10%/20%）
 
     返回：{
         limit_up:   涨停价（精确到分）
@@ -663,7 +672,7 @@ def _compute_zhangting_strength(
     n           = len(mins)
 
     # ---------- 涨停价（精确四舍五入）----------
-    limit_up = calculate_limit_price(base_price, code)
+    limit_up = calculate_limit_price(base_price, code, is_st=is_st)
 
     # ---------- 辅助：判断某分钟是否在涨停板上 ----------
     def is_on_limit(idx: int) -> bool:

@@ -382,21 +382,28 @@ def _predict_stocks(mm: MorphologyMatrix, step5, qingxu: str, step2, step4,
         name = c.get('name', c.get('stock_name', ''))
         is_st = name.startswith(('ST', '*ST', 'S*'))
 
-        # 有分钟数据（字典）→ 用MorphologyMatrix精细预测
-        if mp and isinstance(mp, dict):
-            features = mm.extract_from_ohlc(
-                open_px=mp.get('open_px', 0),
-                high_px=mp.get('high_px', 0),
-                low_px=mp.get('low_px', 0),
-                close_px=mp.get('close_px', 0),
-                base_price=mp.get('base_price', mp.get('open_px', 1)),
-                q1_vol_pct=mp.get('q1_vol_pct'),
-                q4_vol_pct=mp.get('q4_vol_pct'),
-                code=code,       # 传入code以正确计算涨跌停价（科创板20%/ST 5%等）
-                is_st=is_st,     # 传入is_st以区分ST股的涨跌停比例
-            )
-            morph = mm.classify(features)
-            pred = mm.predict(features, morph, qingxu, sector_strength=sector_strength)
+        # 有分钟数据（字典）→ 从MySQL取真实241点分钟数据，走extract_features
+        # （extract_from_ohlc的OHLC只有4个价格，无法判断"241个时间点是否都在涨停价"）
+        if mp and isinstance(mp, dict) and ds and date and code:
+            mins = ds.get_mysql_minutes(code, date)  # 单只股票分钟数据
+            if mins and len(mins) >= 60:
+                features = mm.extract_features(mins, code=code, is_st=is_st)
+                morph = mm.classify(features)
+                pred = mm.predict(features, morph, qingxu, sector_strength=sector_strength)
+            else:
+                # 分钟数据不足，降级到extract_from_ohlc（board_quality用amplitude近似）
+                features = mm.extract_from_ohlc(
+                    open_px=mp.get('open_px', 0),
+                    high_px=mp.get('high_px', 0),
+                    low_px=mp.get('low_px', 0),
+                    close_px=mp.get('close_px', 0),
+                    base_price=mp.get('base_price', mp.get('open_px', 1)),
+                    q1_vol_pct=mp.get('q1_vol_pct'),
+                    q4_vol_pct=mp.get('q4_vol_pct'),
+                    is_st=is_st,    # ST股涨停阈值5%，非ST 10%
+                )
+                morph = mm.classify(features)
+                pred = mm.predict(features, morph, qingxu, sector_strength=sector_strength)
         else:
             # 无完整分钟数据但有形态字符串 → 用MorphologyMatrix.from_string()转换
             # minute_pattern可能是: None / '一字板' / '早盘拉升' 等字符串

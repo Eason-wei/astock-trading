@@ -64,10 +64,14 @@ class MorphologyMatrix:
         base_price: float,
         q1_vol_pct: Optional[float] = None,
         q4_vol_pct: Optional[float] = None,
-        code: str = "",
         is_st: bool = False,
     ) -> MorphologyFeatures:
-        """从OHLC数据提取形态特征。code+is_st用于计算涨跌停价判断一字板。"""
+        """
+        从OHLC数据提取形态特征（无逐分钟明细时的降级路径）。
+        一字板判断用 amplitude<3% 近似，无法做到"241个时间点都在涨停价"的精确判断。
+        若有完整分钟数据，应调用 extract_features()。
+        is_st 区分ST股涨停阈值（5%）与非ST（10%）。
+        """
         return self._clf.extract_from_ohlc(
             open_px=open_px,
             high_px=high_px,
@@ -76,7 +80,6 @@ class MorphologyMatrix:
             base_price=base_price,
             q1_vol_pct=q1_vol_pct,
             q4_vol_pct=q4_vol_pct,
-            code=code,
             is_st=is_st,
         )
 
