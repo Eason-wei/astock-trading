@@ -89,7 +89,7 @@ class MorphologyFeatures:
     # 由 extract_features() 在有完整分钟数据时计算
     consistency_at_limit: float = 0.0
         # 涨停一字板精确度：全天价格 == 涨停价的分钟比例（0.0~1.0）
-        # 修复后 A 类要求 consistency_at_limit >= 0.95
+        # 修复后 A 类要求 consistency_at_limit >= 0.99
     consistency_at_lower: float = 0.0
         # 跌停一字板精确度：全天价格 == 跌停价的分钟比例（0.0~1.0）
-        # 跌停一字板要求 consistency_at_lower >= 0.95
+        # 跌停一字板要求 consistency_at_lower >= 0.99

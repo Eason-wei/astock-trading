@@ -341,15 +341,15 @@ class MorphologyClassifier:
           10. E1：普通波动（amp<5%，兜底）
         """
         # ── ① A类涨停一字板 ────────────────────────────────────
-        # 有分钟数据：逐分钟一致性（严格）；无分钟数据：fallback到board_quality近似
-        if f.consistency_at_limit >= 0.95:
+        # 有分钟数据：逐分钟一致性（>=99%才是一字板）；无分钟数据：fallback到board_quality近似
+        if f.consistency_at_limit >= 0.99:
             return Morphology.A
         if f.consistency_at_limit == 0.0 and f.board_quality == '涨停一字板':
             # extract_from_ohlc路径，consistency未计算，用旧近似逻辑
             return Morphology.A
 
         # ── ② D1跌停一字板 ────────────────────────────────────
-        if f.consistency_at_lower >= 0.95:
+        if f.consistency_at_lower >= 0.99:
             return Morphology.D1
         if f.consistency_at_lower == 0.0 and f.board_quality == '跌停一字板':
             return Morphology.D1
