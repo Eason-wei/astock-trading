@@ -134,14 +134,31 @@ class MorphologyClassifier:
     def _judge_board_quality(self, open_pct: float, close_pct: float,
                               high_pct: float, low_pct: float,
                               amplitude: float, is_limit_up: bool) -> str:
-        """判断板的质量"""
+        """
+        判断板的质量（修复版：区分涨停一字/跌停一字/普通一字）。
+
+        涨停一字板：close_pct >= 9.5% 且 amplitude < 3%（最强信号，无量锁仓）
+        跌停一字板：close_pct <= -9.5% 且 amplitude < 3%（最弱信号，无量跌停封板）
+        普通一字板：amplitude < 3% 且非涨跌停（波动极小，无方向）
+        烂板：涨停后炸开过，收盘与最高点差 > 3%
+        实体板：正常封板，非烂板
+        非涨停：未涨停
+        """
+        # ── 一字板细分（修复：严格区分涨停/跌停/普通）────────────
+        # 注意：amplitude < 3 的情况下，涨跌停方向的判断完全依赖
+        #   close_pct（不用 is_limit_up，因为跌停时 is_limit_up=False）
+        if close_pct >= 9.5 and amplitude < 3:
+            return '涨停一字板'
+        if close_pct <= -9.5 and amplitude < 3:
+            # 跌停一字板：is_limit_up=False，所以必须独立判断
+            # 不再落入后续 amplitude < 3 的普通一字板分支
+            return '跌停一字板'
+        if amplitude < 3:
+            return '普通一字板'
+
+        # ── amplitude >= 3%：正常判断 ─────────────────────────
         if not is_limit_up:
             return '非涨停'
-        # 涨停了，判断是一字板还是实体板
-        is_yibi = (close_pct < 1 and amplitude < 3)
-        if is_yibi:
-            return '一字板'
-        # 烂板判断：最高点和收盘点差距大
         if high_pct - close_pct > 3:
             return '烂板'
         return '实体板'
@@ -175,12 +192,25 @@ class MorphologyClassifier:
         is_limit_up = close_pct >= 9.5
         f30 = q1_vol_pct if q1_vol_pct is not None else 0.0
 
-        # 一字板判断
-        is_yibi = (close_pct < 1 and f30 > 80) or (is_limit_up and amplitude < 3)
-        board_quality = '一字板' if is_yibi else (
-            '烂板' if (is_limit_up and amplitude > 8) else
-            ('实体板' if is_limit_up else '非涨停')
-        )
+        # ── board_quality 细粒度判断（与 _judge_board_quality 保持一致）──
+        # 涨停一字板：close_pct >= 9.5% 且 amplitude < 3%
+        # 跌停一字板：close_pct <= -9.5% 且 amplitude < 3%
+        # 普通一字板：amplitude < 3% 且非涨跌停
+        # 烂板：amplitude >= 3% 且涨停后炸开 high_pct - close_pct > 3
+        # 实体板：amplitude >= 3% 且正常涨停
+        # 非涨停：未涨停
+        if close_pct >= 9.5 and amplitude < 3:
+            board_quality = '涨停一字板'
+        elif close_pct <= -9.5 and amplitude < 3:
+            board_quality = '跌停一字板'
+        elif amplitude < 3:
+            board_quality = '普通一字板'
+        elif is_limit_up and amplitude > 8:
+            board_quality = '烂板'
+        elif is_limit_up:
+            board_quality = '实体板'
+        else:
+            board_quality = '非涨停'
 
         # 成交量分段估算
         if q1_vol_pct is not None:
@@ -234,9 +264,13 @@ class MorphologyClassifier:
           8. E1：普通波动（amp<5%）
           9. H：横向整理（amp<2 + Q1>70%）
         """
-        # A类：一字板（无量锁仓）
-        if f.board_quality == '一字板':
+        # A类：涨停一字板（无量锁仓，最强信号）
+        # 修复：严格区分涨停一字板 vs 跌停一字板
+        # 跌停一字板归入 D1（市场最弱信号），不进入 A 类
+        if f.board_quality == '涨停一字板':
             return Morphology.A
+        if f.board_quality == '跌停一字板':
+            return Morphology.D1
 
         # B类：正常涨停（换手充分，稳健）
         if f.close_pct >= 9.5 and f.amplitude < 8:
