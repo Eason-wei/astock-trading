@@ -1,0 +1,191 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "形态T+1预测配置（代码化5条核心规则）",
+    "last_updated": "2026-04-23"
+  },
+  "morphologies": {
+    "A类一字板": {
+      "name": "A类一字板",
+      "t1_bias": "positive",
+      "t1_confidence": 0.85,
+      "risk_level": "极低",
+      "key_indicator": "成交在开盘前30分已完成，盘中无量",
+      "warning": "T+1慎防一字开板砸盘",
+      "rule_description": "一字板（无量锁仓），最强形态"
+    },
+    "B类正常涨停": {
+      "name": "B类正常涨停",
+      "t1_bias": "positive",
+      "t1_confidence": 0.65,
+      "risk_level": "中低",
+      "key_indicator": "换手率3-8%，开板≤1次",
+      "rule_description": "正常涨停，有换手支撑"
+    },
+    "C1冲高回落": {
+      "name": "C1冲高回落",
+      "t1_bias": "negative",
+      "t1_confidence": 0.75,
+      "risk_level": "高",
+      "key_indicator": "收盘涨幅远小于最高点涨幅，振幅>10%",
+      "warning": "高潮期=地雷，T+1低开或直接砸",
+      "rule_description": "C1高潮地雷规则"
+    },
+    "D1低开低走": {
+      "name": "D1低开低走",
+      "t1_bias": "negative",
+      "t1_confidence": 0.7,
+      "risk_level": "高",
+      "key_indicator": "开盘-2%以下，盘中无像样反弹",
+      "rule_description": "低开低走，弱势延续"
+    },
+    "D2尾盘急拉": {
+      "name": "D2尾盘急拉",
+      "t1_bias": "negative",
+      "t1_confidence": 0.8,
+      "risk_level": "高",
+      "key_indicator": "f30>80% + q4在-2%~+1%，尾盘偷袭",
+      "warning": "f30>80%时胜率显著下降",
+      "rule_description": "D2尾盘偷袭规则"
+    },
+    "E1普通波动": {
+      "name": "E1普通波动",
+      "t1_bias": "neutral",
+      "t1_confidence": 0.45,
+      "risk_level": "中",
+      "key_indicator": "振幅<5%，无明显方向",
+      "rule_description": "普通波动，方向不明"
+    },
+    "E2宽幅震荡": {
+      "name": "E2宽幅震荡",
+      "t1_bias": "neutral",
+      "t1_confidence": 0.5,
+      "risk_level": "中",
+      "key_indicator": "振幅>8%，多空激烈",
+      "rule_description": "宽幅震荡，方向不明"
+    },
+    "F1温和放量": {
+      "name": "F1温和放量稳步推进",
+      "t1_bias": "positive",
+      "t1_confidence": 0.88,
+      "risk_level": "低",
+      "key_indicator": "Q1占比40-60%，振幅3-8%，量价配合",
+      "note": "实战中3/3胜率的形态",
+      "rule_description": "F1最安全规则：温和放量稳步推进"
+    },
+    "H横向整理": {
+      "name": "H横向整理",
+      "t1_bias": "neutral",
+      "t1_confidence": 0.4,
+      "risk_level": "高",
+      "key_indicator": "价格几乎不动，成交量极低",
+      "warning": "无方向，等题材催化剂",
+      "rule_description": "横向整理，无效信号"
+    }
+  },
+  "stage_overrides": {
+    "_description": "高潮期/退潮期等特殊阶段对各形态的置信度调节",
+    "高潮期": {
+      "B类正常涨停": {
+        "t1_direction": "neutral",
+        "t1_confidence": 0.55,
+        "t1_expected_change": "-2%~+3%",
+        "rule_applied": "B类规则(高潮期)：高潮期次日B类降级为中性，高开亦谨慎"
+      },
+      "E1普通波动": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.55,
+        "t1_expected_change": "+3%~+8%",
+        "rule_applied": "[P3-E1高潮修复] E1×高潮期：29样本/胜率69.0%/avg=+4.50%；高潮期情绪高涨，E1普通波动跟随市场正收益。注意：amplitude≥3时降权至neutral（见predictor.py规则1.5）"
+      },
+      "E2宽幅震荡": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.70,
+        "t1_expected_change": "+5%~+15%",
+        "rule_applied": "[P3-E2高潮修复] E2×高潮期：146样本/胜率93.8%/avg=+11.37%；高潮期市场做多情绪强烈，E2宽幅震荡正收益明确"
+      },
+      "D1低开低走": {
+        "t1_direction": "neutral",
+        "t1_confidence": 0.45,
+        "t1_expected_change": "-2%~+4%",
+        "rule_applied": "D1规则(高潮期)：高潮期低开为逆势错杀股，次日或有修复机会"
+      },
+      "C1冲高回落": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.55,
+        "t1_expected_change": "+8%~+15%",
+        "rule_applied": "[幸存者偏差警告] 高潮期C1：105样本/胜率100%可能存在幸存者偏差，冲高超12%回落则直接降权至negative；本配置conf已从0.62降至0.55以反映不确定性"
+      }
+    },
+    "降温期": {
+      "B类正常涨停": {
+        "t1_direction": "neutral",
+        "t1_confidence": 0.50,
+        "t1_expected_change": "-2%~+3%",
+        "rule_applied": "降温期B类：高潮后的涨停容易低开，高潮情绪退潮期谨慎"
+      },
+      "E1普通波动": {
+        "t1_direction": "neutral",
+        "t1_confidence": 0.45,
+        "t1_expected_change": "-2%~+2%",
+        "rule_applied": "降温期E1：方向不明，市场情绪混沌，普通波动无参考价值"
+      },
+      "E2宽幅震荡": {
+        "t1_direction": "neutral",
+        "t1_confidence": 0.45,
+        "t1_expected_change": "-3%~+3%",
+        "rule_applied": "降温期E2：多空分歧最大时期，宽幅震荡方向不明"
+      }
+    },
+    "退潮期": {
+      "D1低开低走": {
+        "t1_direction": "negative",
+        "t1_confidence": 0.78,
+        "t1_expected_change": "<-2%",
+        "rule_applied": "D1规则(退潮期)：退潮期低开低走延续弱势，加权看空"
+      }
+    },
+    "冰点期": {
+      "E1普通波动": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.6,
+        "t1_expected_change": "+2%~+8%",
+        "rule_applied": "E1规则(冰点期)：冰点日主力已完成洗盘，次日抛压极轻，受益于情绪反转"
+      },
+      "E2宽幅震荡": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.65,
+        "t1_expected_change": "+3%~+15%",
+        "rule_applied": "[P3-③数据修复] E2×冰点期：47样本/胜率83.0%/avg=+9.04%；冰点次日抛压轻+情绪反转双重驱动正收益"
+      }
+    },
+    "修复期": {
+      "E1普通波动": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.54,
+        "t1_expected_change": "+2%~+8%",
+        "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）"
+      }
+    },
+    "升温期": {
+      "E1普通波动": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.60,
+        "t1_expected_change": "+3%~+12%",
+        "rule_applied": "[手动修复] 升温期ban1首板数据验证：60样本/avg=+8.97%/胜率93.3%，市场情绪回暖带动普通波动股正收益"
+      },
+      "E2宽幅震荡": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.68,
+        "t1_expected_change": "+3%~+21%",
+        "rule_applied": "[数据验证] 升温期E2(amp>8%,tag∈[zhaban,ban1])：47样本/胜率91.5%/avg=+9.44%/负收益仅3只，市场情绪回暖驱动宽幅震荡股正收益"
+      },
+      "C1冲高回落": {
+        "t1_direction": "positive",
+        "t1_confidence": 0.62,
+        "t1_expected_change": "+8%~+15%",
+        "rule_applied": "[数据修正] 升温期C1(amp>8%,tag∈[ban1,ban2])：43样本/胜率95.3%/avg=+10.68%/仅1只负收益(-1.27%)，原hardcoded规则错误（高潮地雷应为positive）"
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "退潮期": {
+    "F1温和放量": {
+      "correct": 0,
+      "total": 8
+    },
+    "B类正常涨停": {
+      "correct": 38,
+      "total": 74,
+      "profit_sum": 89.28999999999996,
+      "profit_count": 38
+    },
+    "C1冲高回落": {
+      "correct": 0,
+      "total": 16,
+      "profit_sum": 3.1500000000000004,
+      "profit_count": 8
+    },
+    "E2宽幅震荡": {
+      "correct": 0,
+      "total": 36
+    },
+    "A类一字板": {
+      "correct": 7,
+      "total": 41
+    },
+    "E1普通波动": {
+      "correct": 23,
+      "total": 247
+    }
+  },
+  "修复期": {
+    "F1温和放量": {
+      "correct": 0,
+      "total": 2
+    },
+    "A类一字板": {
+      "correct": 3,
+      "total": 3,
+      "profit_sum": 10.14,
+      "profit_count": 3
+    },
+    "B类正常涨停": {
+      "correct": 2,
+      "total": 6,
+      "profit_sum": 5.750000000000001,
+      "profit_count": 3
+    },
+    "E1普通波动": {
+      "correct": 16,
+      "total": 37,
+      "profit_sum": 33.36,
+      "profit_count": 17
+    },
+    "E2宽幅震荡": {
+      "correct": 0,
+      "total": 4
+    }
+  }
+}

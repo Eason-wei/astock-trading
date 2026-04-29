@@ -1,0 +1,4221 @@
+{
+  "date": "2026-04-14",
+  "t1_date": "2026-04-15",
+  "score": "13/32 = 41%",
+  "accuracy": 0.406,
+  "cognitive_analysis": [],
+  "system_fixes": [
+    "首板→二板晋级率仅0.0％<20％，提高首板操作门槛",
+    "连板健康度20<50，考虑降低整体仓位上限"
+  ],
+  "next_improvements": [
+    "必须找到1-2个识知矛盾点，不是堆数量",
+    "冰点期识知需持续验证：强势龙头穿越冰点的条件是什么？"
+  ],
+  "beliefstore_writes": 32,
+  "beliefstore_successful": 28,
+  "stock_predictions": [
+    {
+      "code": "002484",
+      "name": "江海股份",
+      "plate": "算力",
+      "ban_tag": "zhaban",
+      "morphology": "F1温和放量",
+      "morphology_name": "F1温和放量",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+5%",
+      "confidence": 0.88,
+      "rule_applied": "F1规则：3/3胜率，温和放量稳步推进",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": true
+    },
+    {
+      "code": "301396",
+      "name": "宏景科技",
+      "plate": "算力",
+      "ban_tag": "N/A",
+      "morphology": "C1冲高回落",
+      "morphology_name": "C1冲高回落",
+      "t1_direction": "negative",
+      "t1_expected_change": "-1%~+1%",
+      "confidence": 0.75,
+      "rule_applied": "通用规则：C1冲高回落",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002229",
+      "name": "鸿博股份",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "603629",
+      "name": "利通电子",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "000967",
+      "name": "盈峰环境",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "603026",
+      "name": "石大胜华",
+      "plate": "公告",
+      "ban_tag": "fanbao",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "600605",
+      "name": "汇通能源",
+      "plate": "公告",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "300857",
+      "name": "协创数据",
+      "plate": "公告",
+      "ban_tag": "20cm",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "002647",
+      "name": "仁东控股",
+      "plate": "公告",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "002463",
+      "name": "沪电股份",
+      "plate": "公告",
+      "ban_tag": "ban1",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "301219",
+      "name": "腾远钴业",
+      "plate": "公告",
+      "ban_tag": "20cm",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "600396",
+      "name": "华电辽能",
+      "plate": "电力",
+      "ban_tag": "ban2",
+      "morphology": "B类正常涨停",
+      "morphology_name": "B类正常涨停",
+      "t1_direction": "positive",
+      "t1_expected_change": "+1%~+3%",
+      "confidence": 0.73,
+      "rule_applied": "通用规则：B类正常涨停",
+      "warnings": [],
+      "sector_boost": 0.15,
+      "can_enter": true
+    },
+    {
+      "code": "000889",
+      "name": "中嘉博创",
+      "plate": "算力",
+      "ban_tag": "fanbao",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002686",
+      "name": "亿利达",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "301189",
+      "name": "奥尼电子",
+      "plate": "算力",
+      "ban_tag": "20cm",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "600539",
+      "name": "狮头股份",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "603139",
+      "name": "康惠股份",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "301157",
+      "name": "华塑科技",
+      "plate": "算力",
+      "ban_tag": "zhaban",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002990",
+      "name": "盛视科技",
+      "plate": "算力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "603109",
+      "name": "神驰机电",
+      "plate": "公告",
+      "ban_tag": "zhaban",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002107",
+      "name": "沃华医药",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "601588",
+      "name": "北辰实业",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "605167",
+      "name": "利柏特",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "600469",
+      "name": "风神股份",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002314",
+      "name": "南山控股",
+      "plate": "其他",
+      "ban_tag": "zhaban",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002692",
+      "name": "远程股份",
+      "plate": "电力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "600173",
+      "name": "卧龙新能",
+      "plate": "电力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "601778",
+      "name": "晶科科技",
+      "plate": "电力",
+      "ban_tag": "ban1",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "001896",
+      "name": "豫能控股",
+      "plate": "电力",
+      "ban_tag": "zhaban",
+      "morphology": "E1普通波动",
+      "morphology_name": "E1普通波动",
+      "t1_direction": "positive",
+      "t1_expected_change": "+2%~+8%",
+      "confidence": 0.535,
+      "rule_applied": "[传播引擎] 继承E1普通波动×冰点期的配置（同组'high_rebound': 冰点期∈['冰点期', '修复期'] ∧ 修复期∈['冰点期', '修复期']）",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002297",
+      "name": "博云新材",
+      "plate": "公告",
+      "ban_tag": "ban2",
+      "morphology": "A类一字板",
+      "morphology_name": "A类一字板",
+      "t1_direction": "positive",
+      "t1_expected_change": "+3%~+8%",
+      "confidence": 0.205,
+      "rule_applied": "A类规则：一字板（无量锁仓），最强形态",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    },
+    {
+      "code": "002885",
+      "name": "京泉华",
+      "plate": "其他",
+      "ban_tag": "ban1",
+      "morphology": "A类一字板",
+      "morphology_name": "A类一字板",
+      "t1_direction": "positive",
+      "t1_expected_change": "+3%~+8%",
+      "confidence": 0.205,
+      "rule_applied": "A类规则：一字板（无量锁仓），最强形态",
+      "warnings": [],
+      "sector_boost": 0.0,
+      "can_enter": false
+    }
+  ],
+  "stock_verifications": [
+    {
+      "code": "002484",
+      "name": "江海股份",
+      "morphology": "F1温和放量",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 1.8,
+      "correct": true,
+      "score": 85,
+      "lesson": {
+        "lesson": "盈利正确，市场确认了形态有效性",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "skipped": true,
+          "reason": "freq_cap",
+          "lesson_type": "stock"
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 85,
+          "lesson_key": "profitable"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=1.8% via real(MySQL_ok)"
+    },
+    {
+      "code": "301396",
+      "name": "宏景科技",
+      "morphology": "C1冲高回落",
+      "predicted_direction": "negative",
+      "actual_direction": "positive",
+      "actual_tag": "",
+      "actual_close_pct": 8.31,
+      "correct": false,
+      "score": 0,
+      "lesson": {
+        "lesson": "[修复期][C1冲高回落]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "C1冲高回落下跌幅度超预期",
+        "suggested_fix": "检查是否存在主力拉高出货特征",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_C1冲高回落",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_C1冲高回落_20260422",
+                "old_version": 59,
+                "new_version": 60,
+                "conflict": "版本升级 59→60，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "C1冲高回落_修复期",
+                "mechanism": "C1冲高回落下跌幅度超预期",
+                "outcome": "overshoot: 实际涨幅8.3%远超预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_C1冲高回落_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA008",
+                "category": "形态判断",
+                "description": "[高潮期阶段]C1冲高回落形态有效性需重新评估。预判=未知 实际=-9.1%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "立即执行：高潮期遇到C1形态禁止开仓"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "发现薄弱环节",
+                    "lesson": "[高潮期阶段]C1冲高回落形态有效性需重新评估。预判=未知 实际=-9.1%"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.1%",
+                    "lesson": "C1冲高回落形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.6%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.1%",
+                    "lesson": "C1冲高回落形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.6%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.1%",
+                    "lesson": "C1冲高回落形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 2.2%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 11.3%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 7.7%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 8.0%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 2.7%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 7.5%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "C1冲高回落形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 2.2%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.0%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 11.3%",
+                    "lesson": "C1冲高回落下跌幅度超预期"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 0,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=8.31% via real(MySQL_ok)"
+    },
+    {
+      "code": "002229",
+      "name": "鸿博股份",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -2.94,
+      "correct": false,
+      "score": 20.300000000000004,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 421,
+                "new_version": 422,
+                "conflict": "版本升级 421→422，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-2.9%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 20.300000000000004,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-2.94% via real(MySQL_ok)"
+    },
+    {
+      "code": "603629",
+      "name": "利通电子",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban2",
+      "actual_close_pct": 10.01,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 422,
+                "new_version": 423,
+                "conflict": "版本升级 422→423，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=10.01% via real(MySQL_ok)"
+    },
+    {
+      "code": "000967",
+      "name": "盈峰环境",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 1.63,
+      "correct": true,
+      "score": 85,
+      "lesson": {
+        "lesson": "盈利正确，市场确认了形态有效性",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "skipped": true,
+          "reason": "freq_cap",
+          "lesson_type": "stock"
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 85,
+          "lesson_key": "profitable"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=1.63% via real(MySQL_ok)"
+    },
+    {
+      "code": "603026",
+      "name": "石大胜华",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 0.13,
+      "correct": false,
+      "score": 35.65,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]方向判断错误，需检查形态分类是否准确或阶段判断是否正确",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "重新校验形态分类规则和阶段判断逻辑",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 423,
+                "new_version": 424,
+                "conflict": "版本升级 423→424，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "wrong_direction: 方向错误：预判positive，实际0.1%",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 35.65,
+          "lesson_key": "wrong_direction"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=0.13% via real(MySQL_ok)"
+    },
+    {
+      "code": "600605",
+      "name": "汇通能源",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban2",
+      "actual_close_pct": 10.0,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 424,
+                "new_version": 425,
+                "conflict": "版本升级 424→425，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=10.0% via real(MySQL_ok)"
+    },
+    {
+      "code": "300857",
+      "name": "协创数据",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "",
+      "actual_close_pct": 12.46,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 425,
+                "new_version": 426,
+                "conflict": "版本升级 425→426，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=12.46% via real(MySQL_ok)"
+    },
+    {
+      "code": "002647",
+      "name": "仁东控股",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -2.02,
+      "correct": false,
+      "score": 24.900000000000002,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 426,
+                "new_version": 427,
+                "conflict": "版本升级 426→427，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-2.0%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 24.900000000000002,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-2.02% via real(MySQL_ok)"
+    },
+    {
+      "code": "002463",
+      "name": "沪电股份",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -4.88,
+      "correct": false,
+      "score": 10.600000000000001,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 427,
+                "new_version": 428,
+                "conflict": "版本升级 427→428，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-4.9%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 10.600000000000001,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-4.88% via real(MySQL_ok)"
+    },
+    {
+      "code": "301219",
+      "name": "腾远钴业",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -3.1,
+      "correct": false,
+      "score": 19.5,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 428,
+                "new_version": 429,
+                "conflict": "版本升级 428→429，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-3.1%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 19.5,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-3.1% via real(MySQL_ok)"
+    },
+    {
+      "code": "600396",
+      "name": "华电辽能",
+      "morphology": "B类正常涨停",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "bads",
+      "actual_close_pct": 0.25,
+      "correct": false,
+      "score": 36.25,
+      "lesson": {
+        "lesson": "[修复期][B类正常涨停]方向判断错误，需检查形态分类是否准确或阶段判断是否正确",
+        "root_cause": "B类正常涨停形态有效性需重新评估",
+        "suggested_fix": "重新校验形态分类规则和阶段判断逻辑",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_B类正常涨停",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_B类正常涨停_20260422",
+                "old_version": 429,
+                "new_version": 430,
+                "conflict": "版本升级 429→430，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "B类正常涨停_修复期",
+                "mechanism": "B类正常涨停形态有效性需重新评估",
+                "outcome": "wrong_direction: 方向错误：预判positive，实际0.2%",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_B类正常涨停_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA007",
+                "category": "形态判断",
+                "description": "[高潮期阶段]B类正常涨停形态有效性需重新评估。预判=未知 实际=-2.0%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.2%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.7%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.3%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.4%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.6%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.0%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.9%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.1%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.8%",
+                    "lesson": "B类正常涨停形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 36.25,
+          "lesson_key": "wrong_direction"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=0.25% via real(MySQL_ok)"
+    },
+    {
+      "code": "000889",
+      "name": "中嘉博创",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban2",
+      "actual_close_pct": 9.98,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1708,
+                "new_version": 1709,
+                "conflict": "版本升级 1708→1709，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=9.98% via real(MySQL_ok)"
+    },
+    {
+      "code": "002686",
+      "name": "亿利达",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -2.77,
+      "correct": false,
+      "score": 21.150000000000002,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1709,
+                "new_version": 1710,
+                "conflict": "版本升级 1709→1710，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-2.8%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 21.150000000000002,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-2.77% via real(MySQL_ok)"
+    },
+    {
+      "code": "301189",
+      "name": "奥尼电子",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "20cm",
+      "actual_close_pct": 20.0,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1710,
+                "new_version": 1711,
+                "conflict": "版本升级 1710→1711，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=20.0% via real(MySQL_ok)"
+    },
+    {
+      "code": "600539",
+      "name": "狮头股份",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 0.06,
+      "correct": false,
+      "score": 35.3,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]方向判断错误，需检查形态分类是否准确或阶段判断是否正确",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "重新校验形态分类规则和阶段判断逻辑",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1711,
+                "new_version": 1712,
+                "conflict": "版本升级 1711→1712，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "wrong_direction: 方向错误：预判positive，实际0.1%",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 35.3,
+          "lesson_key": "wrong_direction"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=0.06% via real(MySQL_ok)"
+    },
+    {
+      "code": "603139",
+      "name": "康惠股份",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "",
+      "actual_close_pct": 3.9,
+      "correct": true,
+      "score": 95,
+      "lesson": {
+        "lesson": "盈利正确，市场确认了形态有效性",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "skipped": true,
+          "reason": "freq_cap",
+          "lesson_type": "stock"
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 95,
+          "lesson_key": "profitable"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=3.9% via real(MySQL_ok)"
+    },
+    {
+      "code": "301157",
+      "name": "华塑科技",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -4.98,
+      "correct": false,
+      "score": 10.099999999999994,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1712,
+                "new_version": 1713,
+                "conflict": "版本升级 1712→1713，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-5.0%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 10.099999999999994,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-4.98% via real(MySQL_ok)"
+    },
+    {
+      "code": "002990",
+      "name": "盛视科技",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban2",
+      "actual_close_pct": 10.01,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1713,
+                "new_version": 1714,
+                "conflict": "版本升级 1713→1714，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=10.01% via real(MySQL_ok)"
+    },
+    {
+      "code": "603109",
+      "name": "神驰机电",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -1.41,
+      "correct": false,
+      "score": 27.95,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1714,
+                "new_version": 1715,
+                "conflict": "版本升级 1714→1715，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-1.4%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 27.95,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-1.41% via real(MySQL_ok)"
+    },
+    {
+      "code": "002107",
+      "name": "沃华医药",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 1.53,
+      "correct": true,
+      "score": 85,
+      "lesson": {
+        "lesson": "盈利正确，市场确认了形态有效性",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "skipped": true,
+          "reason": "freq_cap",
+          "lesson_type": "stock"
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 85,
+          "lesson_key": "profitable"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=1.53% via real(MySQL_ok)"
+    },
+    {
+      "code": "601588",
+      "name": "北辰实业",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "zhaban",
+      "actual_close_pct": -4.35,
+      "correct": false,
+      "score": 13.25,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1715,
+                "new_version": 1716,
+                "conflict": "版本升级 1715→1716，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-4.3%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 13.25,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-4.35% via real(MySQL_ok)"
+    },
+    {
+      "code": "605167",
+      "name": "利柏特",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -9.98,
+      "correct": false,
+      "score": 0,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]遭遇跌停极端行情，需加入防跌停止损规则",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "加入跌停=立即止损规则，仓位上限10%",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1716,
+                "new_version": 1717,
+                "conflict": "版本升级 1716→1717，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "limit_down: 实际涨幅-10.0%远低于预判（跌停）",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 0,
+          "lesson_key": "limit_down"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-9.98% via real(MySQL_ok)"
+    },
+    {
+      "code": "600469",
+      "name": "风神股份",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -1.52,
+      "correct": false,
+      "score": 27.400000000000002,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1717,
+                "new_version": 1718,
+                "conflict": "版本升级 1717→1718，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-1.5%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 27.400000000000002,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-1.52% via real(MySQL_ok)"
+    },
+    {
+      "code": "002314",
+      "name": "南山控股",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": -1.82,
+      "correct": false,
+      "score": 25.9,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1718,
+                "new_version": 1719,
+                "conflict": "版本升级 1718→1719，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-1.8%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 25.9,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-1.82% via real(MySQL_ok)"
+    },
+    {
+      "code": "600664",
+      "name": "哈药股份",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban2",
+      "actual_close_pct": 9.9,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1719,
+                "new_version": 1720,
+                "conflict": "版本升级 1719→1720，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=9.9% via real(MySQL_ok)"
+    },
+    {
+      "code": "002692",
+      "name": "远程股份",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -4.76,
+      "correct": false,
+      "score": 11.200000000000003,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1720,
+                "new_version": 1721,
+                "conflict": "版本升级 1720→1721，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-4.8%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 11.200000000000003,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-4.76% via real(MySQL_ok)"
+    },
+    {
+      "code": "600173",
+      "name": "卧龙新能",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -6.42,
+      "correct": false,
+      "score": 2.8999999999999986,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1721,
+                "new_version": 1722,
+                "conflict": "版本升级 1721→1722，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-6.4%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 2.8999999999999986,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-6.42% via real(MySQL_ok)"
+    },
+    {
+      "code": "601778",
+      "name": "晶科科技",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "neutral",
+      "actual_tag": "",
+      "actual_close_pct": 0.33,
+      "correct": false,
+      "score": 36.65,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]方向判断错误，需检查形态分类是否准确或阶段判断是否正确",
+        "root_cause": "E1普通波动形态有效性需重新评估",
+        "suggested_fix": "重新校验形态分类规则和阶段判断逻辑",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1722,
+                "new_version": 1723,
+                "conflict": "版本升级 1722→1723，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "E1普通波动_修复期",
+                "mechanism": "E1普通波动形态有效性需重新评估",
+                "outcome": "wrong_direction: 方向错误：预判positive，实际0.3%",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_E1普通波动_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA005",
+                "category": "形态判断",
+                "description": "[退潮期阶段]E1普通波动形态有效性需重新评估。预判=未知 实际=6.7%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "检查是否存在主力拉高出货特征"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 0.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 3.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.6%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -5.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.9%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.3%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -13.0%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.5%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -4.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.8%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.4%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.7%",
+                    "lesson": "E1普通波动形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 36.65,
+          "lesson_key": "wrong_direction"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=0.33% via real(MySQL_ok)"
+    },
+    {
+      "code": "001896",
+      "name": "豫能控股",
+      "morphology": "E1普通波动",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban1",
+      "actual_close_pct": 10.03,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][E1普通波动]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_E1普通波动",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_E1普通波动_20260422",
+                "old_version": 1723,
+                "new_version": 1724,
+                "conflict": "版本升级 1723→1724，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=10.03% via real(MySQL_ok)"
+    },
+    {
+      "code": "002297",
+      "name": "博云新材",
+      "morphology": "A类一字板",
+      "predicted_direction": "positive",
+      "actual_direction": "positive",
+      "actual_tag": "ban3",
+      "actual_close_pct": 10.01,
+      "correct": true,
+      "score": 75,
+      "lesson": {
+        "lesson": "[修复期][A类一字板]预判幅度偏保守，实际超出预期，可能存在市场加速行为",
+        "root_cause": "预测准确，认知有效",
+        "suggested_fix": "",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_A类一字板",
+          "correct": true,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_A类一字板_20260422",
+                "old_version": 170,
+                "new_version": 171,
+                "conflict": "版本升级 170→171，内容已变更",
+                "semantic_conflicts": []
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": true,
+          "score": 75,
+          "lesson_key": "overshoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=10.01% via real(MySQL_ok)"
+    },
+    {
+      "code": "002885",
+      "name": "京泉华",
+      "morphology": "A类一字板",
+      "predicted_direction": "positive",
+      "actual_direction": "negative",
+      "actual_tag": "",
+      "actual_close_pct": -3.66,
+      "correct": false,
+      "score": 16.700000000000003,
+      "lesson": {
+        "lesson": "[修复期][A类一字板]预判幅度偏乐观，实际大幅低于预期，应重新评估形态有效性",
+        "root_cause": "A类一字板形态有效性需重新评估",
+        "suggested_fix": "适当扩大预判幅度区间，或降低置信度",
+        "update_result": {
+          "timestamp": "2026-04-22 19:06",
+          "prediction_key": "T+1预测_A类一字板",
+          "correct": false,
+          "actions": [
+            [
+              "belief",
+              {
+                "belief_key": "验证_T+1预测_A类一字板_20260422",
+                "old_version": 171,
+                "new_version": 172,
+                "conflict": "版本升级 171→172，内容已变更",
+                "semantic_conflicts": []
+              }
+            ],
+            [
+              "chain",
+              {
+                "trigger": "A类一字板_修复期",
+                "mechanism": "A类一字板形态有效性需重新评估",
+                "outcome": "undershoot: 实际涨幅-3.7%远低于预判",
+                "when_works": "",
+                "when_fails": "",
+                "source_title": "step7/8验证_20260422",
+                "source_url": "",
+                "theme": "验证_修复期_A类一字板_❌_待修正",
+                "learned_at": "04-22 19:06"
+              }
+            ],
+            [
+              "weak_area",
+              {
+                "id": "WA003",
+                "category": "形态判断",
+                "description": "[退潮期阶段]A类一字板形态有效性需重新评估。预判=未知 实际=-2.5%",
+                "impact": "高",
+                "frequency": "高",
+                "strategies": [
+                  "重新校验形态分类规则和阶段判断逻辑"
+                ],
+                "last_triggered": "2026-04-22",
+                "status": "active",
+                "related_chains": [],
+                "history": [
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.7%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -7.7%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -2.6%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 4.9%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 5.1%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.9%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -3.0%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.2%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -0.3%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -8.9%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 6.7%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 10.0%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 5.3%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → 7.2%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -9.9%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  },
+                  {
+                    "date": "2026-04-22",
+                    "event": "验证失败: 未知 → -6.7%",
+                    "lesson": "A类一字板形态有效性需重新评估"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "verify_result": {
+          "correct": false,
+          "score": 16.700000000000003,
+          "lesson_key": "undershoot"
+        }
+      },
+      "data_quality": "real",
+      "data_quality_note": "close_pct=-3.66% via real(MySQL_ok)"
+    }
+  ]
+}
