@@ -498,8 +498,8 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, mysql_data: Dict = None,
             if len(mins) < 60:
                 continue
 
-            # 从 mysql_key 反推纯数字 code（如 '603095.SH' → '603095'）
-            clean = mysql_key.replace('.SZ', '').replace('.SH', '').strip()
+            # 从 mysql_key 反推纯数字 code（如 '603095.SH' → '603095', '920011.BJ' → '920011'）
+            clean = mysql_key.replace('.SZ', '').replace('.SH', '').replace('.BJ', '').strip()
 
             # 判断是否 ST（ST股涨跌停比例不同）
             lb_info = lianban_code_map.get(clean, {})
