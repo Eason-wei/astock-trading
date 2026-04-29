@@ -398,8 +398,9 @@ class MorphologyClassifier:
             return Morphology.D1
 
         # B类：正常涨停（换手充分，稳健）
-        # 阈值12%：真实涨停股振幅通常在8-15%（开板后再封是常态），amplitude<12%可覆盖
-        if f.close_pct >= 9.5 and f.amplitude < 12:
+        # 阈值20%：真实涨停股振幅可达8-20%（开板后再封是常态），amplitude<20%可覆盖
+        # Bug39修复：12%过窄，14%涨停振幅会落入E1兜底（错误分类）
+        if f.close_pct >= 9.5 and f.amplitude < 20:
             return Morphology.B
 
         # C1：冲高回落（收盘涨幅远小于最高点涨幅，振幅大）
@@ -425,8 +426,9 @@ class MorphologyClassifier:
             return Morphology.E2
 
         # H：横向整理（价格几乎不动，成交量极低）
-        # 注意：H 的 amplitude<2 在 E1 的 amplitude<5 之前检查
-        if f.amplitude < 2 and f.q1_volume_pct > 70:
+        # Bug33修复：amplitude<2%在extract_from_ohlc路径几乎无法触发（high-low通常为整数）
+        # 改为<3%更实用，同时保留H类"极度低波动"的语义
+        if f.amplitude < 3 and f.q1_volume_pct > 70:
             return Morphology.H
 
         # E1：普通波动
