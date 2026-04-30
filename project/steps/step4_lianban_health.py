@@ -81,17 +81,15 @@ def run(lianban: Dict, **kwargs) -> Dict[str, Any]:
         lower_cnt = ban_counts.get(lower, 0)
 
         # 晋级率来源：lianban[N].rate = 昨日ban(N-1)→今日banN的晋级率（%）
-        # ban1.rate=187 是首板增长倍数（今日/昨日），不是晋级率，无意义
-        # 只有 ban2+ 才有真正的晋级率
-        raw_rate = tier_map.get(lower, {}).get('rate', 0) or 0
-        actual_rate = None if lower == 'ban1' else raw_rate
+        # rate存在目标层（higher），ban1.rate=187是首板增长倍数非晋级率
+        actual_rate = tier_map.get(higher, {}).get('rate', 0) or 0
 
         progression.append({
             'from': ban_sequence[i + 1],
             'to': ban_sequence[i],
             'from_cnt': lower_cnt,
             'to_cnt': higher_cnt,
-            'rate': actual_rate,  # None for ban1（无晋级率），数字 for ban2+
+            'rate': actual_rate,  # ban1→ban2用ban2.rate，ban2→ban3用ban3.rate
         })
 
     result['progression'] = progression
@@ -114,12 +112,9 @@ def run(lianban: Dict, **kwargs) -> Dict[str, Any]:
         depth_key = prog['from']
         depth_weight = DEPTH_WEIGHTS.get(depth_key, 1.0)
 
-        # ban1.rate=None（无晋级率），跳过
-        if r is None:
-            continue
-        # 样本太少时不置信
+        # 样本太少时不置信（跳过一次判断）
         if lower_cnt < 5:
-            continue  # 样本不足，跳过
+            continue
 
         if r == 0:
             continue  # 无数据跳过
