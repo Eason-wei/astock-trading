@@ -80,16 +80,18 @@ def run(lianban: Dict, **kwargs) -> Dict[str, Any]:
         higher_cnt = ban_counts.get(higher, 0)
         lower_cnt = ban_counts.get(lower, 0)
 
-        # 直接用 MongoDB 自带的跨日晋级率（复盘网统计的昨日该层→上一层晋级率）
-        # tier_map[lower]['rate'] = 昨日该层连板池中今日晋级到上一层的比例（%）
-        actual_rate = tier_map.get(lower, {}).get('rate', 0) or 0
+        # 晋级率来源：lianban[N].rate = 昨日ban(N-1)→今日banN的晋级率（%）
+        # ban1.rate=187 是首板增长倍数（今日/昨日），不是晋级率，无意义
+        # 只有 ban2+ 才有真正的晋级率
+        raw_rate = tier_map.get(lower, {}).get('rate', 0) or 0
+        actual_rate = None if lower == 'ban1' else raw_rate
 
         progression.append({
             'from': ban_sequence[i + 1],
             'to': ban_sequence[i],
             'from_cnt': lower_cnt,
             'to_cnt': higher_cnt,
-            'rate': actual_rate,  # ← 直接用 MongoDB rate，不再覆盖
+            'rate': actual_rate,  # None for ban1（无晋级率），数字 for ban2+
         })
 
     result['progression'] = progression
@@ -107,12 +109,15 @@ def run(lianban: Dict, **kwargs) -> Dict[str, Any]:
     import math as _math
 
     for prog in progression:
-        r = prog['rate'] or 0
+        r = prog['rate']
         lower_cnt = prog['from_cnt']
         depth_key = prog['from']
         depth_weight = DEPTH_WEIGHTS.get(depth_key, 1.0)
 
-        # 数量门控：样本太少时晋级率不置信
+        # ban1.rate=None（无晋级率），跳过
+        if r is None:
+            continue
+        # 样本太少时不置信
         if lower_cnt < 5:
             continue  # 样本不足，跳过
 
