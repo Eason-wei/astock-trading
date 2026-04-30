@@ -66,9 +66,12 @@ def run(lianban: Dict, jiuyang: List[Dict] = None, fupan: Dict = None, full: boo
             }
 
     def ban_height(code: str) -> int:
+        """计算连板高度，20cm/zhaban/fanbao 排除在外不参与龙头比较"""
         tag = lianban_code_map.get(code, {}).get('tag', '')
+        if tag in ('bads', '20cm', 'zhaban', 'fanbao'):
+            return -2  # 排除项，不参与龙头排序
         if tag == 'bads':
-            return -1  # 晋级失败股不参与龙头比较
+            return -1  # 晋级失败股
         try:
             return int(tag.replace('ban', '').replace('b', ''))
         except (ValueError, AttributeError):
